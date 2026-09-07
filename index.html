@@ -35,9 +35,7 @@
             border-color: #3b82f6;
             box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.15);
         }
-        /* Hide scrollbar for Chrome, Safari and Opera */
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        /* Hide scrollbar for IE, Edge and Firefox */
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
@@ -69,10 +67,9 @@
         </div>
     </header>
 
-    <!-- Navigation Pills / Bubble Shortcuts (Scrollable horizontally on mobile) -->
+    <!-- Navigation Pills / Bubble Shortcuts -->
     <nav class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-[73px] z-40 py-3 shadow-sm w-full overflow-hidden">
         <div class="max-w-4xl mx-auto px-4 w-full">
-            <!-- Desktop / Horizontal Scroll Bubbles -->
             <div id="nav-bubbles" class="flex justify-start sm:justify-center gap-2 overflow-x-auto no-scrollbar py-1 w-full">
                 <button onclick="switchPage('beranda')" class="nav-btn px-4 py-2 rounded-xl bg-blue-600 text-white font-bold text-xs transition-all duration-200 shadow-sm border border-blue-600 flex-shrink-0">Beranda</button>
                 <button onclick="switchPage('jaseb-lpm')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0">Jaseb LPM</button>
@@ -92,7 +89,7 @@
                 <button onclick="switchPage('jaseb-lpfp'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">Jaseb LPFP</button>
                 <button onclick="switchPage('editing'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">Editing</button>
                 <button onclick="switchPage('wording'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">Wording</button>
-                <button onclick="switchPage('app-premium'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">App Prem</button>
+                <button onclick="switchPage('app-premium'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">App Premium</button>
                 <button onclick="switchPage('topup-game'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">Top Up Game</button>
                 <button onclick="switchPage('lainnya'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">Lainnya</button>
                 <button onclick="switchPage('hiring'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-amber-50 text-amber-700 font-bold text-xs border border-amber-200">Hiring Team</button>
@@ -100,10 +97,10 @@
         </div>
     </nav>
 
-    <!-- Main Content Container (Dynamic Pages) -->
+    <!-- Main Content Container -->
     <main class="max-w-4xl mx-auto px-4 py-6 space-y-12 pb-28 w-full box-border">
 
-        <!-- 1. BERANDA (Landing Page) -->
+        <!-- 1. BERANDA -->
         <div id="page-beranda" class="page-content space-y-8 animate-fade w-full">
             <div class="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white p-6 sm:p-12 rounded-3xl shadow-xl border border-slate-800 relative overflow-hidden">
                 <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-blue-600/10 rounded-full blur-3xl"></div>
@@ -123,7 +120,6 @@
                 </div>
             </div>
 
-            <!-- Quick Info Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
                     <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-bold flex-shrink-0"><i class="fa-solid fa-shield-halved"></i></div>
@@ -173,7 +169,7 @@
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">EDITING MENU</h2>
             </div>
             <p class="text-xs text-blue-700 font-semibold bg-blue-50 border border-blue-200 p-3 rounded-xl">ℹ️ Note: Harga ditentukan oleh tim yang take pesanan mu</p>
-            <div id="grid-editing" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
+            <div id="grid-editing" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
         </section>
 
         <!-- 5. WORDING -->
@@ -315,7 +311,6 @@
     </button>
 
     <script>
-        // Multi-page / Tab Switching Logic
         function switchPage(pageId) {
             const pages = document.querySelectorAll('.page-content');
             pages.forEach(p => p.classList.add('hidden'));
@@ -325,7 +320,6 @@
                 targetPage.classList.remove('hidden');
             }
 
-            // Update Desktop Bubble Styles
             const desktopButtons = document.querySelectorAll('.nav-btn');
             desktopButtons.forEach(btn => {
                 btn.classList.remove('bg-blue-600', 'text-white', 'bg-amber-500');
@@ -346,7 +340,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Toggle Mobile Hamburger Drawer
         function toggleMobileMenu() {
             const drawer = document.getElementById('mobile-drawer');
             const icon = document.getElementById('hamburger-icon');
@@ -430,7 +423,6 @@ Jika ada yang ingin ditanyakan langsung tanyakan, harap bersabar pasti akan di b
             window.open(`https://wa.me/6285167971251?text=${encodeURIComponent("Misi min, izin nanya dong")}`, "_blank");
         }
 
-        // Render Menus on DOM Ready
         document.addEventListener("DOMContentLoaded", () => {
             const renderCard = (title, price, onclickAction) => `
                 <div onclick="${onclickAction}" class="bg-white p-3.5 rounded-2xl border border-slate-200/80 card-hover flex justify-between items-center cursor-pointer group shadow-sm">
@@ -444,18 +436,46 @@ Jika ada yang ingin ditanyakan langsung tanyakan, harap bersabar pasti akan di b
                 </div>
             `;
 
+            // 1. JASEB LPM
             const lpmData = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000];
             document.getElementById('grid-lpm').innerHTML = lpmData.map(num => renderCard(`${num} LPM`, num, `orderViaWA('${num} LPM', 'Jaseb LPM')`)).join('');
 
+            // 2. JASEB LPFP
             const lpfpPrices = {50:75, 100:125, 150:175, 200:225, 250:275, 300:325, 350:375, 400:425, 450:475, 500:525, 550:575, 600:625, 650:675, 700:725, 750:775, 800:825, 850:875, 900:925, 950:975, 1000:1025};
             document.getElementById('grid-lpfp').innerHTML = Object.entries(lpfpPrices).map(([num, price]) => renderCard(`${num} LPFP`, price, `orderViaWA('${num} LPFP', 'Jaseb LPFP')`)).join('');
 
-            const editingData = ["PROFILE", "KATALOG", "SERTIFIKAT", "POSTER", "ID CARD", "TWINBON", "YEARBOOK", "MANIPS SELCA", "MANIPS HALF BODY", "MANIPS FULL BODY", "SCRIBBLE KISS", "SCRIBBLE HAFT", "SCRIBBLE FULL"];
-            document.getElementById('grid-editing').innerHTML = editingData.map(item => renderCard(item, null, `orderViaWA('${item}', 'Editing')`)).join('');
+            // 3. EDITING
+            const editingData = [
+                {n: "PROFILE", p: "7.000"}, {n: "ID CARD", p: "7.000"}, {n: "CONTACT BRACKET", p: "3.000"},
+                {n: "POSTER", p: "9.000"}, {n: "POSTER COMPLEX", p: "12.000"}, {n: "TWIBBON", p: "7.000"}, {n: "TWIBBON BIRTHDAY", p: "7.000"}, {n: "TEMPLATE EVENT", p: "6.000"}, {n: "TEMPLATE BDAY", p: "6.000"}, {n: "TICKET DONE", p: "4.000"}, {n: "SURAT HAK PATEN", p: "5.000"}, {n: "RAPORT", p: "6.000"}, {n: "SERTIFIKAT", p: "5.000 / RP.8.000"},
+                {n: "MOODBOARD BASIC 3 SLIDE + HEADER", p: "7.000"}, {n: "MOODBOARD BASIC 6 SLIDE + HEADER", p: "10.000"}, {n: "MOODBOARD DECO 3 SLIDE + HEADER", p: "13.000"}, {n: "MOODBOARD DECO 6 SLIDE + HEADER", p: "17.000"}, {n: "LOVEBOARD 3 SLIDE + HEADER", p: "14.000"}, {n: "LOVEBOARD 6 SLIDE + HEADER", p: "18.000"},
+                {n: "SELCA", p: "5.000"}, {n: "HALF BODY", p: "7.000"}, {n: "FULL BODY", p: "9.000"}, {n: "MANIPS REALISTIS", p: "10.000"}, {n: "MANIPS COMPLEX", p: "12.000+"},
+                {n: "KISSED BY", p: "4.000"}, {n: "HALF SCRIBBLE", p: "6.000"}, {n: "FULL SCRIBBLE", p: "8.000"},
+                {n: "WALLPAPER COUPLE", p: "7.000"}, {n: "CYBER COUPLE", p: "6.000"}, {n: "POLAROID PHOTO", p: "5.000"}, {n: "CLOSE UP FOTBAR", p: "5.000"},
+                {n: "YEARBOOK BASIC", p: "9.000"}, {n: "YEARBOOK CUSTOM", p: "10.000"}, {n: "YEARBOOK COMPLEKS", p: "12.000"}, {n: "STORY EDIT", p: "4.000"}, {n: "POSTER EDIT", p: "9.000"}, {n: "ARTIKEL", p: "6.000"}, {n: "YEARBOOK", p: "9.000"}, {n: "MANIPS", p: "5.000"}, {n: "CYBER", p: "6.000"}, {n: "FOTBAR", p: "5.000"}
+            ];
+            document.getElementById('grid-editing').innerHTML = editingData.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Editing')`)).join('');
 
-            const wordingData = ["WORDING BIO", "WORDING PFP", "WORDING LOCATION", "WORDING DISPLAY NAME", "WORDING TITTLE KATALOG", "WORDING LIST GRUP", "WORDING BIRTHDAY", "WORDING UP-CHAR", "WORDING LIST HASTAG", "WORDING DESC GRUP", "WORDING DESC KATALOG"];
-            document.getElementById('grid-wording').innerHTML = wordingData.map(item => renderCard(item, null, `orderViaWA('${item}', 'Wording')`)).join('');
+            // 4. WORDING (Combined ranges without short/medium/long)
+            const wordingData = [
+                {n: "WORDING PACK BIASA", p: "7.000 - 12.000"},
+                {n: "WORDING PACK COMPLETE", p: "12.000 - 19.000"},
+                {n: "WORDING BIO", p: "4.000 - 8.000"},
+                {n: "WORDING PFP", p: "5.000 - 8.000"},
+                {n: "WORDING LOCATION", p: "2.000 - 4.000"},
+                {n: "WORDING DISPLAY NAME", p: "2.000 - 4.000"},
+                {n: "WORDING TITLE KATALOG", p: "4.000 - 8.000"},
+                {n: "WORDING LIST GROUP", p: "7.000 - 11.000"},
+                {n: "WORDING BIRTHDAY", p: "3.000 - 9.000"},
+                {n: "WORDING UP-CHR", p: "5.000 - 7.000"},
+                {n: "WORDING LIST HASHTAG", p: "4.000 - 8.000"},
+                {n: "WORDING DESK GROUP", p: "5.000 - 11.000"},
+                {n: "WORDING DESK KATALOG", p: "6.000 - 11.000"},
+                {n: "WORDING FAKE IG", p: "4.000 - 8.000"}
+            ];
+            document.getElementById('grid-wording').innerHTML = wordingData.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Wording')`)).join('');
 
+            // 5. APP PREMIUM
             const amData = [{n:"AM ANDROID 1B",p:"2.000"},{n:"AM IOS 1B",p:"2.000"},{n:"APPLE MUSIC IOS 1B",p:"4.500"},{n:"APPLE MUSIC ANDROID 1B",p:"9.000"},{n:"APPLE MUSIC FAMHEAD 1B",p:"10.000"}];
             document.getElementById('grid-am').innerHTML = amData.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'App Premium')`)).join('');
 
@@ -471,6 +491,7 @@ Jika ada yang ingin ditanyakan langsung tanyakan, harap bersabar pasti akan di b
             const aiData = [{n:"BLACKBOX AI 14H SHAR",p:"6.000"},{n:"BLACKBOX AI 1B SHAR",p:"19.500"},{n:"BLACKBOX AI 1T PRIV",p:"185.500"},{n:"CHATGPT 14H SHAR",p:"30.500"},{n:"CHATGPT 1B SHAR",p:"54.500"},{n:"GEMINI 12B LINK",p:"16.000"},{n:"DUOLINGGO 7H",p:"4.000"},{n:"FIZZO 1B SHAR",p:"6.000"},{n:"SCRIBD 1B PRIV",p:"11.000"}];
             document.getElementById('grid-ai').innerHTML = aiData.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'App Premium')`)).join('');
 
+            // 6. TOP UP GAME
             const aovLol = [{n:"TOPUP AOV 7V",p:"4.000"},{n:"TOPUP AOV 18V",p:"7.500"},{n:"TOPUP AOV 40V",p:"10.000"},{n:"TOPUP AOV 90V",p:"18.500"},{n:"TOPUP AOV 230V",p:"44.000"},{n:"TOPUP LOL 425WC",p:"54.000"},{n:"TOPUP LOL 1.000WC",p:"118.000"},{n:"TOPUP LOL 1.850WC",p:"212.000"},{n:"TOPUP LOL 3.275WC",p:"371.000"},{n:"TOPUP LOL 4.800WC",p:"530.000"}];
             document.getElementById('grid-aovlol').innerHTML = aovLol.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Top Up Game')`)).join('');
 
@@ -483,7 +504,8 @@ Jika ada yang ingin ditanyakan langsung tanyakan, harap bersabar pasti akan di b
             const otherGames = [{n:"TOPUP ML 5D",p:"3.000"},{n:"TOPUP ML 100D",p:"21.500"},{n:"TOPUP ML AVT 1.499M",p:"251.000"},{n:"TOPUP PUBG 60UC",p:"17.000"},{n:"TOPUP PUBG 325UC",p:"77.500"},{n:"TOPUP ROBLOX GIFT 50K",p:"48.500"},{n:"TOPUP ROBLOX VR 100RB",p:"83.000"},{n:"TOPUP VALORAN 475VP",p:"54.500"},{n:"TOPUP VALORAN 1.000VP",p:"106.500"},{n:"TOPUP ZEPETO 14Z",p:"15.000"},{n:"TOPUP ZEPETO 58Z",p:"53.500"},{n:"WETV 25C",p:"5.000"},{n:"WETV 299C",p:"43.500"},{n:"WETV 1.099C",p:"154.000"}];
             document.getElementById('grid-othergames').innerHTML = otherGames.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Top Up Game')`)).join('');
 
-            const lainnyaData = ["NOKOS", "SEWA BOT", "KEBSOS WA", "KEBSOS TELEGRAM", "KEBSOS INSTAGRAM", "KEBSOS TIKTOK", "KEBSOS FACEBOOK"];
+            // 7. LAINNYA (Sewa bot excluded)
+            const lainnyaData = ["NOKOS", "KEBSOS WA", "KEBSOS TELEGRAM", "KEBSOS INSTAGRAM", "KEBSOS TIKTOK", "KEBSOS FACEBOOK"];
             document.getElementById('grid-lainnya').innerHTML = lainnyaData.map(item => renderCard(item, null, `orderViaWA('${item}', 'Lainnya')`)).join('');
         });
     </script>
