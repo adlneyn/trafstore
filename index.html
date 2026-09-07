@@ -362,7 +362,7 @@
                 textTemplate = `Misi min mau mesen *${item}*
 
 format
-⸙ ꯭ ꯭ ꯭✦    Nama Pesanan   ─   ${item}
+⸙ ꯭ ꯭ ꯭✦    Nama Pemesanan   ─   
 ⸙ ꯭ ꯭ ꯭✦    Nomor   ─   08 (wajib diisi)
 ⸙ ꯭ ꯭ ꯭✦    Banyak   ─   ${item}
 ⸙ ꯭ ꯭ ꯭✦    Hari   ─   1/2/3/4/5/6/7 Day
@@ -381,13 +381,13 @@ Store: +100
 Berfoto: +25
 Bervideo: +50
 
-Tanyakan jika ada pertanyaan, sabar pasti akan di jawab`;
+Jika dalam 1 jam tidak dibalas, harap chat kembali, terima kasih.`;
             } else if (type === 'Editing' || type === 'Wording') {
                 textTemplate = `Misi min mau mesen *${item}*
 
 format
 FORMAT EDITING DAN WORDING
-⸙ ꯭ ꯭ ꯭✦    Jenis Pesanan   ─   ${type}
+⸙ ꯭ ꯭ ꯭✦    Nama Pemesanan   ─   
 ⸙ ꯭ ꯭ ꯭✦    Nomor   ─   08 (wajib)
 ⸙ ꯭ ꯭ ꯭✦    Pesanan   ─   ${item}
 ⸙ ꯭ ꯭ ꯭✦    Jumlah   ─   
@@ -400,7 +400,7 @@ FORMAT EDITING DAN WORDING
 ⸙ ꯭ ꯭ ꯭✦    Ukuran Wording  ─   Short/Medium/Long
 ⸙ ꯭ ꯭ ꯭✦    Req++  ─   
 
-Jika ada yang ingin ditanyakan langsung tanyakan, harap bersabar pasti akan di balas`;
+Jika dalam 1 jam tidak dibalas, harap chat kembali, terima kasih.`;
             } else if (type === 'App Premium' || type === 'Top Up Game') {
                 textTemplate = `Misi min, mesen *${item}* ready gak min?`;
             } else if (type === 'Lainnya') {
