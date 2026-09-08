@@ -111,9 +111,10 @@ FORMAT EDITING DAN WORDING
 ⸙ ꯭ ꯭ ꯭✦    Insrush   ─    Ya/Tidak
 ⸙ ꯭ ꯭ ꯭✦    Refrensi   ─   
 > wajib untuk yang inrush
-⸙ ꯭ ꯭ ꯭✦    Muse + Name   ─   
-⸙ ꯭ ꯭ ꯭✦    Theme  ─   
-⸙ ꯭ ꯭ ꯭✦    Ukuran  ─   
+⸙ ꯭ ꯭ ꯭✦    Muse + Name Editing   ─   
+⸙ ꯭ ꯭ ꯭✦    Theme & Color  ─   
+⸙ ꯭ ꯭ ꯭✦    Ukuran Editing  ─  
+⸙ ꯭ ꯭ ꯭✦    Bahasa  ─    
 ⸙ ꯭ ꯭ ꯭✦    Ukuran Wording  ─   Short/Medium/Long
 ⸙ ꯭ ꯭ ꯭✦    Req++  ─   
 
