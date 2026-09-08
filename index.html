@@ -26,22 +26,10 @@
             }
         }
     </script>
-    <style>
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; width: 100%; max-width: 100vw; }
-        .card-hover { transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
-        .card-hover:hover {
-            transform: translateY(-3px);
-            border-color: #3b82f6;
-            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.15);
-        }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-600 selection:text-white w-full overflow-x-hidden">
 
-    <!-- Header & Welcome Banner -->
     <header class="bg-slate-900/90 backdrop-blur-md text-white sticky top-0 z-50 border-b border-slate-800 shadow-lg w-full">
         <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
             <div class="flex items-center space-x-3 min-w-0">
@@ -55,11 +43,10 @@
             </div>
             
             <div class="flex items-center space-x-3 flex-shrink-0">
-                <div class="hidden sm:flex items-center space-x-2 bg-blue-950/60 border border-blue-800/50 px-3.5 py-1.5 rounded-full text-xs font-semibold text-blue-200 shadow-inner">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span>Jam Open: 09.00 - 23.00 WIB</span>
+                <div id="store-status-badge" class="hidden sm:flex items-center space-x-2 bg-emerald-950/60 border border-emerald-800/50 px-3.5 py-1.5 rounded-full text-xs font-semibold text-emerald-200 shadow-inner">
+                    <span id="status-dot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span id="status-text">Jam Open: 09.00 - 23.00 WIB</span>
                 </div>
-                <!-- Mobile Hamburger Toggle Button -->
                 <button onclick="toggleMobileMenu()" class="sm:hidden w-10 h-10 rounded-xl bg-slate-800 text-white flex items-center justify-center border border-slate-700 focus:outline-none">
                     <i id="hamburger-icon" class="fa-solid fa-bars text-lg"></i>
                 </button>
@@ -67,28 +54,29 @@
         </div>
     </header>
 
-    <!-- Navigation Pills / Bubble Shortcuts -->
-    <nav class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-[73px] z-40 py-3 shadow-sm w-full overflow-hidden">
+    <nav class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-[73px] z-40 py-3 shadow-sm w-full">
         <div class="max-w-4xl mx-auto px-4 w-full">
-            <div id="nav-bubbles" class="flex justify-start sm:justify-center gap-2 overflow-x-auto no-scrollbar py-1 w-full">
-                <button onclick="switchPage('beranda')" class="nav-btn px-4 py-2 rounded-xl bg-blue-600 text-white font-bold text-xs transition-all duration-200 shadow-sm border border-blue-600 flex-shrink-0">Beranda</button>
-                <button onclick="switchPage('jaseb-lpm')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0">Jaseb LPM</button>
-                <button onclick="switchPage('jaseb-lpfp')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0">Jaseb LPFP</button>
-                <button onclick="switchPage('editing')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0">Editing</button>
-                <button onclick="switchPage('wording')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0">Wording</button>
-                <button onclick="switchPage('app-premium')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0">App Prem</button>
-                <button onclick="switchPage('topup-game')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0">Top Up Game</button>
-                <button onclick="switchPage('lainnya')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0">Lainnya</button>
-                <button onclick="switchPage('hiring')" class="nav-btn px-4 py-2 rounded-xl bg-amber-50 hover:bg-amber-500 hover:text-white text-amber-700 font-bold text-xs transition-all duration-200 shadow-sm border border-amber-200/80 flex-shrink-0">Hiring Team</button>
+            <div id="nav-bubbles" class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1 w-full scroll-smooth">
+                <button onclick="switchPage('beranda')" class="nav-btn px-4 py-2 rounded-xl bg-blue-600 text-white font-bold text-xs transition-all duration-200 shadow-sm border border-blue-600 flex-shrink-0 whitespace-nowrap">Beranda</button>
+                <button onclick="switchPage('jaseb-lpm')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0 whitespace-nowrap">Jaseb LPM</button>
+                <button onclick="switchPage('jaseb-lpfp')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0 whitespace-nowrap">Jaseb LPFP</button>
+                <button onclick="switchPage('editing')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0 whitespace-nowrap">Editing</button>
+                <button onclick="switchPage('wording')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0 whitespace-nowrap">Wording</button>
+                <button onclick="switchPage('setup-acc')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0 whitespace-nowrap">Setup Acc</button>
+                <button onclick="switchPage('app-premium')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0 whitespace-nowrap">App Prem</button>
+                <button onclick="switchPage('topup-game')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0 whitespace-nowrap">Top Up Game</button>
+                <button onclick="switchPage('lainnya')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0 whitespace-nowrap">Lainnya</button>
+                <button onclick="switchPage('hiring')" class="nav-btn px-4 py-2 rounded-xl bg-amber-50 hover:bg-amber-500 hover:text-white text-amber-700 font-bold text-xs transition-all duration-200 shadow-sm border border-amber-200/80 flex-shrink-0 whitespace-nowrap">Hiring Team</button>
             </div>
 
-            <!-- Mobile Hamburger Menu Content -->
+            <!-- Mobile Drawer Menu -->
             <div id="mobile-drawer" class="hidden sm:hidden flex flex-col gap-2 pt-3 pb-2 border-t border-slate-100 mt-2 w-full">
                 <button onclick="switchPage('beranda'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-blue-600 text-white font-bold text-xs shadow-sm">Beranda</button>
                 <button onclick="switchPage('jaseb-lpm'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">Jaseb LPM</button>
                 <button onclick="switchPage('jaseb-lpfp'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">Jaseb LPFP</button>
                 <button onclick="switchPage('editing'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">Editing</button>
                 <button onclick="switchPage('wording'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">Wording</button>
+                <button onclick="switchPage('setup-acc'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">Setup Acc</button>
                 <button onclick="switchPage('app-premium'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">App Premium</button>
                 <button onclick="switchPage('topup-game'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">Top Up Game</button>
                 <button onclick="switchPage('lainnya'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">Lainnya</button>
@@ -97,7 +85,6 @@
         </div>
     </nav>
 
-    <!-- Main Content Container -->
     <main class="max-w-4xl mx-auto px-4 py-6 space-y-12 pb-28 w-full box-border">
 
         <!-- 1. BERANDA -->
@@ -108,10 +95,10 @@
                     <span class="inline-block bg-blue-600/30 text-blue-300 border border-blue-500/30 text-xs font-bold px-3.5 py-1 rounded-full">✨ Official Virtual Store</span>
                     <h2 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight">Halo, Selamat Datang di <span class="bg-gradient-to-r from-blue-400 to-indigo-300 bg-clip-text text-transparent">Trafalgar Store!</span></h2>
                     <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                        Tempat terpercaya buat kamu yang mau nyari berbagai kebutuhan virtual roleplay terlengkap. Mulai dari Jaseb (LPM & LPFP), Editing kreatif, Wording estetik, Aplikasi Premium buat nemenin rebahan, Top Up Game favoritmu, sampai kebutuhan sosial media & Nokos! 
+                        Trafalgar Store adalah salah satu unit dari Trafalgar Property yang bergerak dibidang store dan jasa di dunia roleplayer. Trafstore dibuka pada tanggal 30 Juli 2026 hingga sekarang.
                     </p>
                     <p class="text-blue-200 text-xs sm:text-sm font-medium bg-blue-950/80 p-3.5 rounded-xl border border-blue-800/40">
-                        💡 <strong class="text-white">Tips:</strong> Pilih menu / kategori di atas untuk mulai melihat daftar layanan dan pricelist kami. Pelayanan ramah, aman, dan pastinya fast respon sesuai jam operasional!
+                        💡 <strong class="text-white">Tips Hari Ini:</strong> Tetap semangat jalani hari dan jangan lupa senyum hari ini! Kami siap melayani kebutuhan roleplayermu sepenuh hati. 🚀
                     </p>
                     <div class="pt-2 flex flex-wrap gap-3">
                         <button onclick="switchPage('jaseb-lpm')" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-lg shadow-blue-600/30 transition">Lihat Pricelist Jaseb</button>
@@ -150,7 +137,7 @@
             <div class="flex items-center space-x-3 border-l-4 border-blue-600 pl-3">
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">JASEB LPM PRICELIST</h2>
             </div>
-            <p class="text-xs text-blue-700 font-semibold bg-blue-50 border border-blue-200 p-3 rounded-xl">ℹ️ Note: Berlaku hingga 3 kelipatan dan 7 hari penyebaran</p>
+            <p class="text-xs text-blue-700 font-semibold bg-blue-50 border border-blue-200 p-3 rounded-xl">ℹ️ Note: berlaku hingga 3 kelipatan dan 7 hari penyebaran</p>
             <div id="grid-lpm" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
         </section>
 
@@ -159,7 +146,7 @@
             <div class="flex items-center space-x-3 border-l-4 border-blue-600 pl-3">
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">JASEB LPFP PRICELIST</h2>
             </div>
-            <p class="text-xs text-blue-700 font-semibold bg-blue-50 border border-blue-200 p-3 rounded-xl">ℹ️ Note: Berlaku hingga 3 kelipatan dan 7 hari penyebaran</p>
+            <p class="text-xs text-blue-700 font-semibold bg-blue-50 border border-blue-200 p-3 rounded-xl">ℹ️ Note: berlaku hingga 3 kelipatan dan 7 hari penyebaran</p>
             <div id="grid-lpfp" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
         </section>
 
@@ -168,8 +155,37 @@
             <div class="flex items-center space-x-3 border-l-4 border-blue-600 pl-3">
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">EDITING MENU</h2>
             </div>
-            <p class="text-xs text-blue-700 font-semibold bg-blue-50 border border-blue-200 p-3 rounded-xl">ℹ️ Note: Harga ditentukan oleh tim yang take pesanan mu</p>
-            <div id="grid-editing" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+            <p class="text-xs text-blue-700 font-semibold bg-blue-50 border border-blue-200 p-3 rounded-xl">ℹ️ Note: pastikan format mu di isi dengan detail</p>
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Kebutuhan PFP</h3>
+                    <div id="grid-edit-pfp" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Kebutuhan Editing Group</h3>
+                    <div id="grid-edit-group" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Kebutuhan Moodboard / Loveboard</h3>
+                    <div id="grid-edit-mood" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Kebutuhan Manips</h3>
+                    <div id="grid-edit-manips" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Kebutuhan Scribble</h3>
+                    <div id="grid-edit-scribble" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Kebutuhan Couple</h3>
+                    <div id="grid-edit-couple" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Kebutuhan Trainee</h3>
+                    <div id="grid-edit-trainee" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                </div>
+            </div>
         </section>
 
         <!-- 5. WORDING -->
@@ -177,11 +193,41 @@
             <div class="flex items-center space-x-3 border-l-4 border-blue-600 pl-3">
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">WORDING MENU</h2>
             </div>
-            <p class="text-xs text-blue-700 font-semibold bg-blue-50 border border-blue-200 p-3 rounded-xl">ℹ️ Note: Harga di tentukan oleh tim take order dan bisa memesan pendek, medium dan panjang</p>
+            <p class="text-xs text-blue-700 font-semibold bg-blue-50 border border-blue-200 p-3 rounded-xl">ℹ️ Note: pastikan format mu di isi dengan detail</p>
             <div id="grid-wording" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
         </section>
 
-        <!-- 6. APP PREMIUM -->
+        <!-- 6. SETUP ACC -->
+        <section id="page-setup-acc" class="page-content hidden space-y-6 w-full">
+            <div class="flex items-center space-x-3 border-l-4 border-blue-600 pl-3">
+                <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">SETUP ACC MENU</h2>
+            </div>
+            <p class="text-xs text-blue-700 font-semibold bg-blue-50 border border-blue-200 p-3 rounded-xl">ℹ️ Note: pastikan format mu di isi dengan detail</p>
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Setup Basic (Basic 01)</h3>
+                    <div id="grid-setup-basic1" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Setup Basic (Basic 02)</h3>
+                    <div id="grid-setup-basic2" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Setup Complete (Complete 01)</h3>
+                    <div id="grid-setup-complete1" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Setup Complete (Complete 02)</h3>
+                    <div id="grid-setup-complete2" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Add-on Deco</h3>
+                    <div id="grid-setup-addon" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. APP PREMIUM -->
         <section id="page-app-premium" class="page-content hidden space-y-6 w-full">
             <div class="flex items-center space-x-3 border-l-4 border-blue-600 pl-3">
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">APP PREMIUM</h2>
@@ -211,7 +257,7 @@
             </div>
         </section>
 
-        <!-- 7. TOP UP GAME -->
+        <!-- 8. TOP UP GAME -->
         <section id="page-topup-game" class="page-content hidden space-y-6 w-full">
             <div class="flex items-center space-x-3 border-l-4 border-blue-600 pl-3">
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">TOP UP GAME</h2>
@@ -237,7 +283,7 @@
             </div>
         </section>
 
-        <!-- 8. LAINNYA -->
+        <!-- 9. LAINNYA -->
         <section id="page-lainnya" class="page-content hidden space-y-6 w-full">
             <div class="flex items-center space-x-3 border-l-4 border-blue-600 pl-3">
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">MENU LAINNYA</h2>
@@ -246,7 +292,7 @@
             <div id="grid-lainnya" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
         </section>
 
-        <!-- 9. HIRING TEAM -->
+        <!-- 10. HIRING TEAM -->
         <section id="page-hiring" class="page-content hidden space-y-6 w-full">
             <div class="flex items-center space-x-3 border-l-4 border-amber-500 pl-3">
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">HIRING TEAM</h2>
@@ -283,7 +329,7 @@
             </div>
         </section>
 
-        <!-- Footer / Community Links -->
+        <!-- FOOTER -->
         <footer class="pt-8 border-t border-slate-200 text-center space-y-4 w-full">
             <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Gabung Grup & Channel Trafalgar Store</p>
             <div class="flex flex-col sm:flex-row justify-center gap-3 flex-wrap">
@@ -305,209 +351,11 @@
 
     </main>
 
-    <!-- Floating WhatsApp Button -->
+    <!-- Floating WhatsApp Admin Button -->
     <button onclick="askAdmin()" class="fixed bottom-6 right-6 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-2xl shadow-xl shadow-emerald-500/30 flex items-center justify-center text-3xl transition-all duration-300 hover:scale-105 active:scale-95 z-50 group">
         <i class="fa-brands fa-whatsapp"></i>
     </button>
 
-    <script>
-        function switchPage(pageId) {
-            const pages = document.querySelectorAll('.page-content');
-            pages.forEach(p => p.classList.add('hidden'));
-
-            const targetPage = document.getElementById(`page-${pageId}`);
-            if (targetPage) {
-                targetPage.classList.remove('hidden');
-            }
-
-            const desktopButtons = document.querySelectorAll('.nav-btn');
-            desktopButtons.forEach(btn => {
-                btn.classList.remove('bg-blue-600', 'text-white', 'bg-amber-500');
-                btn.classList.add('bg-slate-100', 'text-slate-700');
-            });
-
-            desktopButtons.forEach(btn => {
-                if (btn.getAttribute('onclick').includes(`'${pageId}'`)) {
-                    btn.classList.remove('bg-slate-100', 'text-slate-700');
-                    if(pageId === 'hiring') {
-                        btn.classList.add('bg-amber-500', 'text-white');
-                    } else {
-                        btn.classList.add('bg-blue-600', 'text-white');
-                    }
-                }
-            });
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function toggleMobileMenu() {
-            const drawer = document.getElementById('mobile-drawer');
-            const icon = document.getElementById('hamburger-icon');
-            if (drawer.classList.contains('hidden')) {
-                drawer.classList.remove('hidden');
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
-            } else {
-                drawer.classList.add('hidden');
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            }
-        }
-
-        function orderViaWA(item, type) {
-            const waNumber = "6285167971251";
-            let textTemplate = "";
-
-            if (type === 'Jaseb LPM' || type === 'Jaseb LPFP') {
-                textTemplate = `Misi min mau mesen *${item}*
-
-format
-⸙ ꯭ ꯭ ꯭✦    Nama Pemesanan   ─   
-⸙ ꯭ ꯭ ꯭✦    Nomor   ─   08 (wajib diisi)
-⸙ ꯭ ꯭ ꯭✦    Banyak   ─   ${item}
-⸙ ꯭ ꯭ ꯭✦    Hari   ─   1/2/3/4/5/6/7 Day
-⸙ ꯭ ꯭ ꯭✦    Sebar   ─   1×/2×/3×
-> Sesi 01: 09.00 - 00.00
-> Sesi 02 : 00.00 - 00.00
-> Sesi 03 : 00.00 - 23.00
-> n. only wib, isi jika ingin memakai sesi
-⸙ ꯭ ꯭ ꯭✦    Fee+   ─   Tidak/Foto/Video
-⸙ ꯭ ꯭ ꯭✦    Waktu   ─   Inrush/Tidak
-⸙ ꯭ ꯭ ꯭✦    Screenshot   ─   Panjang/Pendek/Tidak
-
-LANGSUNG KIRIM LIST MU
-Inrush: +100
-Store: +100
-Berfoto: +25
-Bervideo: +50
-
-Jika dalam 1 jam tidak dibalas, harap chat kembali, terima kasih.`;
-            } else if (type === 'Editing' || type === 'Wording') {
-                textTemplate = `Misi min mau mesen *${item}*
-
-format
-FORMAT EDITING DAN WORDING
-⸙ ꯭ ꯭ ꯭✦    Nama Pemesanan   ─   
-⸙ ꯭ ꯭ ꯭✦    Nomor   ─   08 (wajib)
-⸙ ꯭ ꯭ ꯭✦    Pesanan   ─   ${item}
-⸙ ꯭ ꯭ ꯭✦    Jumlah   ─   
-⸙ ꯭ ꯭ ꯭✦    Insrush   ─    Ya/Tidak
-⸙ ꯭ ꯭ ꯭✦    Refrensi   ─   
-> wajib untuk yang inrush
-⸙ ꯭ ꯭ ꯭✦    Muse + Name   ─   
-⸙ ꯭ ꯭ ꯭✦    Theme  ─   
-⸙ ꯭ ꯭ ꯭✦    Ukuran  ─   
-⸙ ꯭ ꯭ ꯭✦    Ukuran Wording  ─   Short/Medium/Long
-⸙ ꯭ ꯭ ꯭✦    Req++  ─   
-
-Jika dalam 1 jam tidak dibalas, harap chat kembali, terima kasih.`;
-            } else if (type === 'App Premium' || type === 'Top Up Game') {
-                textTemplate = `Misi min, mesen *${item}* ready gak min?`;
-            } else if (type === 'Lainnya') {
-                textTemplate = `Misi min, mau mesen *${item}* ada min?`;
-            }
-
-            const encodedText = encodeURIComponent(textTemplate);
-            window.open(`https://wa.me/${waNumber}?text=${encodedText}`, "_blank");
-        }
-
-        function applyTeam(divisi) {
-            const waNumber = "6285167971251";
-            const textTemplate = `Misi, saya *muse+nama* niat jadi team *${divisi}*
-> n, isi dan pilih divisi jika ingin pesan mu di jawab.`;
-            const encodedText = encodeURIComponent(textTemplate);
-            window.open(`https://wa.me/${waNumber}?text=${encodedText}`, "_blank");
-        }
-
-        function askAdmin() {
-            window.open(`https://wa.me/6285167971251?text=${encodeURIComponent("Misi min, izin nanya dong")}`, "_blank");
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const renderCard = (title, price, onclickAction) => `
-                <div onclick="${onclickAction}" class="bg-white p-3.5 rounded-2xl border border-slate-200/80 card-hover flex justify-between items-center cursor-pointer group shadow-sm">
-                    <div class="pr-2">
-                        <h3 class="font-bold text-xs sm:text-sm text-slate-800 tracking-tight group-hover:text-blue-600 transition-colors">${title}</h3>
-                        ${price ? `<p class="text-xs font-semibold text-blue-600 mt-0.5">RP. ${price}</p>` : ''}
-                    </div>
-                    <div class="w-8 h-8 rounded-xl bg-slate-100 group-hover:bg-blue-600 group-hover:text-white text-slate-500 flex items-center justify-center transition-all flex-shrink-0 text-xs shadow-inner">
-                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-0.5 transition-transform"></i>
-                    </div>
-                </div>
-            `;
-
-            // 1. JASEB LPM
-            const lpmData = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000];
-            document.getElementById('grid-lpm').innerHTML = lpmData.map(num => renderCard(`${num} LPM`, num, `orderViaWA('${num} LPM', 'Jaseb LPM')`)).join('');
-
-            // 2. JASEB LPFP
-            const lpfpPrices = {50:75, 100:125, 150:175, 200:225, 250:275, 300:325, 350:375, 400:425, 450:475, 500:525, 550:575, 600:625, 650:675, 700:725, 750:775, 800:825, 850:875, 900:925, 950:975, 1000:1025};
-            document.getElementById('grid-lpfp').innerHTML = Object.entries(lpfpPrices).map(([num, price]) => renderCard(`${num} LPFP`, price, `orderViaWA('${num} LPFP', 'Jaseb LPFP')`)).join('');
-
-            // 3. EDITING
-            const editingData = [
-                {n: "PROFILE", p: "7.000"}, {n: "ID CARD", p: "7.000"}, {n: "CONTACT BRACKET", p: "3.000"},
-                {n: "POSTER", p: "9.000"}, {n: "POSTER COMPLEX", p: "12.000"}, {n: "TWIBBON", p: "7.000"}, {n: "TWIBBON BIRTHDAY", p: "7.000"}, {n: "TEMPLATE EVENT", p: "6.000"}, {n: "TEMPLATE BDAY", p: "6.000"}, {n: "TICKET DONE", p: "4.000"}, {n: "SURAT HAK PATEN", p: "5.000"}, {n: "RAPORT", p: "6.000"}, {n: "SERTIFIKAT", p: "5.000 / RP.8.000"},
-                {n: "MOODBOARD BASIC 3 SLIDE + HEADER", p: "7.000"}, {n: "MOODBOARD BASIC 6 SLIDE + HEADER", p: "10.000"}, {n: "MOODBOARD DECO 3 SLIDE + HEADER", p: "13.000"}, {n: "MOODBOARD DECO 6 SLIDE + HEADER", p: "17.000"}, {n: "LOVEBOARD 3 SLIDE + HEADER", p: "14.000"}, {n: "LOVEBOARD 6 SLIDE + HEADER", p: "18.000"},
-                {n: "SELCA", p: "5.000"}, {n: "HALF BODY", p: "7.000"}, {n: "FULL BODY", p: "9.000"}, {n: "MANIPS REALISTIS", p: "10.000"}, {n: "MANIPS COMPLEX", p: "12.000+"},
-                {n: "KISSED BY", p: "4.000"}, {n: "HALF SCRIBBLE", p: "6.000"}, {n: "FULL SCRIBBLE", p: "8.000"},
-                {n: "WALLPAPER COUPLE", p: "7.000"}, {n: "CYBER COUPLE", p: "6.000"}, {n: "POLAROID PHOTO", p: "5.000"}, {n: "CLOSE UP FOTBAR", p: "5.000"},
-                {n: "YEARBOOK BASIC", p: "9.000"}, {n: "YEARBOOK CUSTOM", p: "10.000"}, {n: "YEARBOOK COMPLEKS", p: "12.000"}, {n: "STORY EDIT", p: "4.000"}, {n: "POSTER EDIT", p: "9.000"}, {n: "ARTIKEL", p: "6.000"}, {n: "YEARBOOK", p: "9.000"}, {n: "MANIPS", p: "5.000"}, {n: "CYBER", p: "6.000"}, {n: "FOTBAR", p: "5.000"}
-            ];
-            document.getElementById('grid-editing').innerHTML = editingData.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Editing')`)).join('');
-
-            // 4. WORDING (Combined ranges without short/medium/long)
-            const wordingData = [
-                {n: "WORDING PACK BIASA", p: "7.000 - 12.000"},
-                {n: "WORDING PACK COMPLETE", p: "12.000 - 19.000"},
-                {n: "WORDING BIO", p: "4.000 - 8.000"},
-                {n: "WORDING PFP", p: "5.000 - 8.000"},
-                {n: "WORDING LOCATION", p: "2.000 - 4.000"},
-                {n: "WORDING DISPLAY NAME", p: "2.000 - 4.000"},
-                {n: "WORDING TITLE KATALOG", p: "4.000 - 8.000"},
-                {n: "WORDING LIST GROUP", p: "7.000 - 11.000"},
-                {n: "WORDING BIRTHDAY", p: "3.000 - 9.000"},
-                {n: "WORDING UP-CHR", p: "5.000 - 7.000"},
-                {n: "WORDING LIST HASHTAG", p: "4.000 - 8.000"},
-                {n: "WORDING DESK GROUP", p: "5.000 - 11.000"},
-                {n: "WORDING DESK KATALOG", p: "6.000 - 11.000"},
-                {n: "WORDING FAKE IG", p: "4.000 - 8.000"}
-            ];
-            document.getElementById('grid-wording').innerHTML = wordingData.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Wording')`)).join('');
-
-            // 5. APP PREMIUM
-            const amData = [{n:"AM ANDROID 1B",p:"2.000"},{n:"AM IOS 1B",p:"2.000"},{n:"APPLE MUSIC IOS 1B",p:"4.500"},{n:"APPLE MUSIC ANDROID 1B",p:"9.000"},{n:"APPLE MUSIC FAMHEAD 1B",p:"10.000"}];
-            document.getElementById('grid-am').innerHTML = amData.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'App Premium')`)).join('');
-
-            const spotData = [{n:"SPOTIFY 1B INDPLAN",p:"15.500"},{n:"SPOTIFY 1B FAMPLAN",p:"19.500"},{n:"YOUTUBE 1B AB",p:"3.000"},{n:"YOUTUBE 1B AA",p:"14.000"},{n:"ZOOM 7H",p:"4.500"},{n:"ZOOM 2M",p:"5.500"}];
-            document.getElementById('grid-spot').innerHTML = spotData.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'App Premium')`)).join('');
-
-            const editAppData = [{n:"CANVA 1B MEM",p:"1.500"},{n:"CANVA IT MEM",p:"9.000"},{n:"CANVA LIFETIME MEM",p:"10.000"},{n:"CANVA 1B OWN",p:"7.000"},{n:"CAPCUT 7H SHAR",p:"4.000"},{n:"CAPCUT 1B SHAR",p:"21.000"},{n:"CAPCUT 7H PRIV",p:"5.000"},{n:"CAPCUT 1B PRIV",p:"28.000"},{n:"PICSART 7H SHAR",p:"4.000"},{n:"PICSART 1B SHAR",p:"8.000"},{n:"PICSART 7H PRIV",p:"5.500"},{n:"PICSART 1B PRIV",p:"33.500"},{n:"REMINI 7H SHAR",p:"5.500"},{n:"REMINI 7H PRIV",p:"6.000"},{n:"REMINI 1B WEB",p:"11.000"},{n:"MEITU 14H",p:"6.000"},{n:"MEITU 1B",p:"20.500"}];
-            document.getElementById('grid-editapp').innerHTML = editAppData.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'App Premium')`)).join('');
-
-            const streamData = [{n:"NETLIX 2U10",p:"17.000"},{n:"NETFLIX 1U1P",p:"31.000"},{n:"NETFLIX 1B PRIV",p:"140.000"},{n:"DISNEY 2U1P",p:"16.000"},{n:"DISNEY 1U1P",p:"22.500"},{n:"DISNEY 1B PRIV",p:"127.500"},{n:"HBO 1U1P",p:"14.000"},{n:"HBO 1U1P (2)",p:"23.000"},{n:"HBO 1B PRIV",p:"64.500"},{n:"PRIME VID 1B SHAR",p:"4.000"},{n:"PRIME VID 1B PRIV",p:"9.000"},{n:"BSTATION 1B PRIV",p:"25.500"},{n:"BSTATION 1B SHAR",p:"9.000"},{n:"IQIYI 1B SHAR",p:"10.500"},{n:"IQIYI 1B PRIV",p:"28.000"},{n:"LOKLOK 1B SHAR",p:"16.000"},{n:"LOKLOK 1B PRIV",p:"39.500"},{n:"VIDEO PL 1B SHAR",p:"17.000"},{n:"VIDEO PL 1B TV ONLY",p:"9.000"},{n:"VIDEO MOBILE 1B",p:"55.000"},{n:"VIDEO PL 1B PRIV",p:"38.000"},{n:"VIU 1H",p:"1.500"},{n:"VIU 1B",p:"1.500"},{n:"VIU 3B",p:"2.000"},{n:"VIU LT",p:"4.000"},{n:"VIU PAKET 10ACC",p:"4.000"},{n:"WETV 6U SHAR",p:"6.000"},{n:"WETV 1B SHAR",p:"16.000"},{n:"WETV 1B PRIV",p:"27.500"},{n:"YOUKU 1B SHAR",p:"6.000"},{n:"YOUKU 1B PRIV",p:"24.500"},{n:"WINK 7H",p:"5.000"},{n:"WINK 1B",p:"25.000"}];
-            document.getElementById('grid-stream').innerHTML = streamData.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'App Premium')`)).join('');
-
-            const aiData = [{n:"BLACKBOX AI 14H SHAR",p:"6.000"},{n:"BLACKBOX AI 1B SHAR",p:"19.500"},{n:"BLACKBOX AI 1T PRIV",p:"185.500"},{n:"CHATGPT 14H SHAR",p:"30.500"},{n:"CHATGPT 1B SHAR",p:"54.500"},{n:"GEMINI 12B LINK",p:"16.000"},{n:"DUOLINGGO 7H",p:"4.000"},{n:"FIZZO 1B SHAR",p:"6.000"},{n:"SCRIBD 1B PRIV",p:"11.000"}];
-            document.getElementById('grid-ai').innerHTML = aiData.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'App Premium')`)).join('');
-
-            // 6. TOP UP GAME
-            const aovLol = [{n:"TOPUP AOV 7V",p:"4.000"},{n:"TOPUP AOV 18V",p:"7.500"},{n:"TOPUP AOV 40V",p:"10.000"},{n:"TOPUP AOV 90V",p:"18.500"},{n:"TOPUP AOV 230V",p:"44.000"},{n:"TOPUP LOL 425WC",p:"54.000"},{n:"TOPUP LOL 1.000WC",p:"118.000"},{n:"TOPUP LOL 1.850WC",p:"212.000"},{n:"TOPUP LOL 3.275WC",p:"371.000"},{n:"TOPUP LOL 4.800WC",p:"530.000"}];
-            document.getElementById('grid-aovlol').innerHTML = aovLol.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Top Up Game')`)).join('');
-
-            const ffData = [{n:"TOPUP FF 5D",p:"2.000"},{n:"TOPUP FF 20D",p:"5.000"},{n:"TOPUP FF 50D",p:"8.500"},{n:"TOPUP FF 100D",p:"16.000"},{n:"TOPUP FF 500D",p:"61.000"},{n:"TOPUP FF BP CARD",p:"40.500"},{n:"TOPUP FF PASS L6",p:"6.000"},{n:"TOPUP FF PASS L25",p:"9.500"},{n:"TOPUP FF PASS L30",p:"14.500"},{n:"TOPUP FF PASS MINGGUAN",p:"27.500"},{n:"TOPUP FF PASS MINGGUAN + 100D",p:"40.500"},{n:"TOPUP FF PASS BULANAN + 20D",p:"84.000"},{n:"TOPUP FF PASS BULANAN X2",p:"159.500"},{n:"TOPUP FFMAX 5D",p:"2.000"},{n:"TOPUP FFMAX 100D",p:"14.000"},{n:"TOPUP FFMAX MEM BULANAN",p:"80.000"}];
-            document.getElementById('grid-ff').innerHTML = ffData.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Top Up Game')`)).join('');
-
-            const hoyoData = [{n:"TOPUP GENSHIN WELKIN",p:"88.000"},{n:"TOPUP GENSHIN 60GC",p:"14.000"},{n:"TOPUP GENSHIN 300+30GC",p:"62.000"},{n:"TOPUP GENSHIN 6480+1600GC",p:"1.773.000"},{n:"TOPUP HONKAI ES",p:"84.500"},{n:"TOPUP HONKAI 60OS",p:"18.000"},{n:"TOPUP HONKAI 300+30OS",p:"84.500"},{n:"TOPUP HONKAI ALL PACK",p:"3.283.000"},{n:"TOPUP ZZZ INTER-KNOT",p:"81.500"},{n:"TOPUP ZZZ 60M",p:"18.000"},{n:"TOPUP ZZZ 300M",p:"81.500"},{n:"TOPUP ZZZ ALL PACK M",p:"3.275.500"}];
-            document.getElementById('grid-hoyo').innerHTML = hoyoData.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Top Up Game')`)).join('');
-
-            const otherGames = [{n:"TOPUP ML 5D",p:"3.000"},{n:"TOPUP ML 100D",p:"21.500"},{n:"TOPUP ML AVT 1.499M",p:"251.000"},{n:"TOPUP PUBG 60UC",p:"17.000"},{n:"TOPUP PUBG 325UC",p:"77.500"},{n:"TOPUP ROBLOX GIFT 50K",p:"48.500"},{n:"TOPUP ROBLOX VR 100RB",p:"83.000"},{n:"TOPUP VALORAN 475VP",p:"54.500"},{n:"TOPUP VALORAN 1.000VP",p:"106.500"},{n:"TOPUP ZEPETO 14Z",p:"15.000"},{n:"TOPUP ZEPETO 58Z",p:"53.500"},{n:"WETV 25C",p:"5.000"},{n:"WETV 299C",p:"43.500"},{n:"WETV 1.099C",p:"154.000"}];
-            document.getElementById('grid-othergames').innerHTML = otherGames.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Top Up Game')`)).join('');
-
-            // 7. LAINNYA (Sewa bot excluded)
-            const lainnyaData = ["NOKOS", "KEBSOS WA", "KEBSOS TELEGRAM", "KEBSOS INSTAGRAM", "KEBSOS TIKTOK", "KEBSOS FACEBOOK"];
-            document.getElementById('grid-lainnya').innerHTML = lainnyaData.map(item => renderCard(item, null, `orderViaWA('${item}', 'Lainnya')`)).join('');
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
