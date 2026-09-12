@@ -3,33 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trafalgar Store - Jasa Virtual</title>
+    <title>Trafalgar Store - Jasa Virtual & Store Roleplayer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: {
-                            800: '#1e3a8a',
-                            900: '#0f172a',
-                            950: '#090d16',
-                        },
-                        accent: '#3b82f6'
-                    },
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-600 selection:text-white w-full overflow-x-hidden">
 
+    <!-- HEADER -->
     <header class="bg-slate-900/90 backdrop-blur-md text-white sticky top-0 z-50 border-b border-slate-800 shadow-lg w-full">
         <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
             <div class="flex items-center space-x-3 min-w-0">
@@ -54,6 +36,7 @@
         </div>
     </header>
 
+    <!-- NAVIGATION -->
     <nav class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-[73px] z-40 py-3 shadow-sm w-full">
         <div class="max-w-4xl mx-auto px-4 w-full">
             <div id="nav-bubbles" class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1 w-full scroll-smooth">
@@ -98,7 +81,7 @@
                         Trafalgar Store adalah salah satu unit dari Trafalgar Property yang bergerak dibidang store dan jasa di dunia roleplayer. Trafstore dibuka pada tanggal 30 Juli 2026 hingga sekarang.
                     </p>
                     <p class="text-blue-200 text-xs sm:text-sm font-medium bg-blue-950/80 p-3.5 rounded-xl border border-blue-800/40">
-                        💡 <strong class="text-white">Tips Hari Ini:</strong> Tetap semangat jalani hari dan jangan lupa senyum hari ini! Kami siap melayani kebutuhan roleplayermu sepenuh hati. 🚀
+                        💡 <strong class="text-white">Tips Hari Ini:</strong> Terimakasih sudah selalu mempercayakan store kami dan silahkan berbelanja sepuasnya! 🚀
                     </p>
                     <div class="pt-2 flex flex-wrap gap-3">
                         <button onclick="switchPage('jaseb-lpm')" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-lg shadow-blue-600/30 transition">Lihat Pricelist Jaseb</button>
@@ -155,37 +138,48 @@
             <div class="flex items-center space-x-3 border-l-4 border-blue-600 pl-3">
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">EDITING MENU</h2>
             </div>
-            <p class="text-xs text-blue-700 font-semibold bg-blue-50 border border-blue-200 p-3 rounded-xl">ℹ️ Note: pastikan format mu di isi dengan detail</p>
+            <p class="text-xs text-blue-700 font-semibold bg-blue-50 border border-blue-200 p-3 rounded-xl">ℹ️ pastikan format mu di isi dengan detail</p>
             <div class="space-y-6">
                 <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Kebutuhan PFP</h3>
-                    <div id="grid-edit-pfp" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Magazine</h3>
+                    <div id="grid-edit-magazine" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <div id="note-magazine" class="mt-2 p-3 bg-slate-100 rounded-xl text-xs text-slate-600 font-medium"></div>
                 </div>
                 <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Kebutuhan Editing Group</h3>
-                    <div id="grid-edit-group" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Header</h3>
+                    <div id="grid-edit-header" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
                 </div>
                 <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Kebutuhan Moodboard / Loveboard</h3>
-                    <div id="grid-edit-mood" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Profile</h3>
+                    <div id="grid-edit-profile" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <div id="note-profile" class="mt-2 p-3 bg-slate-100 rounded-xl text-xs text-slate-600 font-medium"></div>
                 </div>
                 <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Kebutuhan Manips</h3>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Manips</h3>
                     <div id="grid-edit-manips" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <div id="note-manips" class="mt-2 p-3 bg-slate-100 rounded-xl text-xs text-slate-600 font-medium"></div>
                 </div>
                 <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Kebutuhan Scribble</h3>
-                    <div id="grid-edit-scribble" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Twibbon IDC</h3>
+                    <div id="grid-edit-twibbonidc" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
                 </div>
                 <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Kebutuhan Couple</h3>
-                    <div id="grid-edit-couple" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Twibbon / STC Bday</h3>
+                    <div id="grid-edit-twibbontwb" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <div id="note-twibbontwb" class="mt-2 p-3 bg-slate-100 rounded-xl text-xs text-slate-600 font-medium"></div>
                 </div>
                 <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Kebutuhan Trainee</h3>
-                    <div id="grid-edit-trainee" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Poster / Artikel</h3>
+                    <div id="grid-edit-poster" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <div id="note-poster" class="mt-2 p-3 bg-slate-100 rounded-xl text-xs text-slate-600 font-medium"></div>
+                </div>
+                <div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Moodboard & Loveboard</h3>
+                    <div id="grid-edit-moodboard" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
                 </div>
             </div>
+            <!-- General Editing Notes Box -->
+            <div id="editing-general-notes" class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-2xl space-y-1.5 text-xs text-blue-900 font-medium"></div>
         </section>
 
         <!-- 5. WORDING -->
@@ -193,7 +187,7 @@
             <div class="flex items-center space-x-3 border-l-4 border-blue-600 pl-3">
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">WORDING MENU</h2>
             </div>
-            <p class="text-xs text-blue-700 font-semibold bg-blue-50 border border-blue-200 p-3 rounded-xl">ℹ️ Note: pastikan format mu di isi dengan detail</p>
+            <p class="text-xs text-blue-700 font-semibold bg-blue-50 border border-blue-200 p-3 rounded-xl">ℹ️ pastikan format mu di isi dengan detail</p>
             <div id="grid-wording" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
         </section>
 
@@ -202,29 +196,31 @@
             <div class="flex items-center space-x-3 border-l-4 border-blue-600 pl-3">
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">SETUP ACC MENU</h2>
             </div>
-            <p class="text-xs text-blue-700 font-semibold bg-blue-50 border border-blue-200 p-3 rounded-xl">ℹ️ Note: pastikan format mu di isi dengan detail</p>
+            <p class="text-xs text-blue-700 font-semibold bg-blue-50 border border-blue-200 p-3 rounded-xl">ℹ️ pastikan format mu di isi dengan detail</p>
             <div class="space-y-6">
                 <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Setup Basic (Basic 01)</h3>
-                    <div id="grid-setup-basic1" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Setup Paket A</h3>
+                    <div id="grid-setup-paketa" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <div id="note-paketa" class="mt-2 p-3 bg-slate-100 rounded-xl text-xs text-slate-600 font-medium"></div>
                 </div>
                 <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Setup Basic (Basic 02)</h3>
-                    <div id="grid-setup-basic2" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Setup Paket B</h3>
+                    <div id="grid-setup-paketb" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <div id="note-paketb" class="mt-2 p-3 bg-slate-100 rounded-xl text-xs text-slate-600 font-medium"></div>
                 </div>
                 <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Setup Complete (Complete 01)</h3>
-                    <div id="grid-setup-complete1" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Setup Paket C</h3>
+                    <div id="grid-setup-paketc" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <div id="note-paketc" class="mt-2 p-3 bg-slate-100 rounded-xl text-xs text-slate-600 font-medium"></div>
                 </div>
                 <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Setup Complete (Complete 02)</h3>
-                    <div id="grid-setup-complete2" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
-                </div>
-                <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Add-on Deco</h3>
-                    <div id="grid-setup-addon" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Birthday Pack</h3>
+                    <div id="grid-setup-birthday" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <div id="note-birthday" class="mt-2 p-3 bg-slate-100 rounded-xl text-xs text-slate-600 font-medium"></div>
                 </div>
             </div>
+            <!-- Setup General Notes Box -->
+            <div id="setup-general-notes" class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-2xl space-y-1.5 text-xs text-blue-900 font-medium"></div>
         </section>
 
         <!-- 7. APP PREMIUM -->

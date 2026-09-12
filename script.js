@@ -111,10 +111,9 @@ FORMAT EDITING DAN WORDING
 ⸙ ꯭ ꯭ ꯭✦    Insrush   ─    Ya/Tidak
 ⸙ ꯭ ꯭ ꯭✦    Refrensi   ─   
 > wajib untuk yang inrush
-⸙ ꯭ ꯭ ꯭✦    Muse + Name Editing   ─   
-⸙ ꯭ ꯭ ꯭✦    Theme & Color  ─   
-⸙ ꯭ ꯭ ꯭✦    Ukuran Editing  ─  
-⸙ ꯭ ꯭ ꯭✦    Bahasa  ─    
+⸙ ꯭ ꯭ ꯭✦    Muse + Name   ─   
+⸙ ꯭ ꯭ ꯭✦    Theme  ─   
+⸙ ꯭ ꯭ ꯭✦    Ukuran  ─   
 ⸙ ꯭ ꯭ ꯭✦    Ukuran Wording  ─   Short/Medium/Long
 ⸙ ꯭ ꯭ ꯭✦    Req++  ─   
 
@@ -163,80 +162,116 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('grid-lpfp').innerHTML = Object.entries(lpfpPrices).map(([num, price]) => renderCard(`${num} LPFP`, `RP. ${price}`, `orderViaWA('${num} LPFP', 'Jaseb LPFP')`)).join('');
 
     // 3. EDITING
-    const editPFP = [{n:"PROFILE", p:"RP. 7.000"}, {n:"ID CARD", p:"RP. 7.000"}, {n:"CONTACT BRACKET", p:"RP. 3.000"}];
-    document.getElementById('grid-edit-pfp').innerHTML = editPFP.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Editing')`)).join('');
+    const editMagazine = [{n:"2 SLIDE", p:"RP. 3.000"}, {n:"3 SLIDE", p:"RP. 4.000"}, {n:"6 SLIDE", p:"RP. 7.000"}];
+    document.getElementById('grid-edit-magazine').innerHTML = editMagazine.map(i => renderCard(i.n, i.p, `orderViaWA('Magazine ${i.n}', 'Editing')`)).join('');
+    document.getElementById('note-magazine').innerHTML = `<strong>ADDITION / TAMBAHAN:</strong><br>• EXTRA CHR: +RP. 1.500 / SLIDE<br>• SIMPLE EDIT: +RP. 2.000 / SLIDE<br>• FULL EDIT: +RP. 3.000 / SLIDE`;
 
-    const editGroup = [{n:"POSTER", p:"RP. 9.000"}, {n:"POSTER COMPLEX", p:"RP. 12.000"}, {n:"TWIBBON", p:"RP. 7.000"}, {n:"TWIBBON BIRTHDAY", p:"RP. 7.000"}, {n:"TEMPLATE EVENT", p:"RP. 6.000"}, {n:"TEMPLATE BDAY", p:"RP. 6.000"}, {n:"TICKET DONE", p:"RP. 4.000"}, {n:"SURAT HAK PATEN", p:"RP. 5.000"}, {n:"RAPORT", p:"RP. 6.000"}, {n:"SERTIFIKAT", p:"RP. 5.000 / RP. 8.000"}];
-    document.getElementById('grid-edit-group').innerHTML = editGroup.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Editing')`)).join('');
+    const editHeader = [{n:"HEADER MAGAZINE", p:"RP. 4.000"}, {n:"HEADER DECO", p:"RP. 5.000"}, {n:"HEADER DESIGN", p:"RP. 6.000"}];
+    document.getElementById('grid-edit-header').innerHTML = editHeader.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Editing')`)).join('');
 
-    const editMood = [{n:"MOODBOARD BASIC 3 SLIDE + HEADER", p:"RP. 7.000"}, {n:"MOODBOARD BASIC 6 SLIDE + HEADER", p:"RP. 10.000"}, {n:"MOODBOARD DECO 3 SLIDE + HEADER", p:"RP. 13.000"}, {n:"MOODBOARD DECO 6 SLIDE + HEADER", p:"RP. 17.000"}, {n:"LOVEBOARD 3 SLIDE + HEADER", p:"RP. 14.000"}, {n:"LOVEBOARD 6 SLIDE + HEADER", p:"RP. 18.000"}];
-    document.getElementById('grid-edit-mood').innerHTML = editMood.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Editing')`)).join('');
+    const editProfile = [{n:"ICONS DECO", p:"RP. 5.000"}, {n:"ICONS DESIGN", p:"RP. 6.000"}];
+    document.getElementById('grid-edit-profile').innerHTML = editProfile.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Editing')`)).join('');
+    document.getElementById('note-profile').innerHTML = `<strong>ADDITION / TAMBAHAN:</strong><br>• EXTRA CHR: +RP. 1.500 / SLIDE`;
 
-    const editManips = [{n:"SELCA", p:"RP. 5.000"}, {n:"HALF BODY", p:"RP. 7.000"}, {n:"FULL BODY", p:"RP. 9.000"}, {n:"MANIPS REALISTIS", p:"RP. 10.000"}, {n:"MANIPS COMPLEX", p:"RP. 12.000+"}];
+    const editManips = [{n:"MANIPS SELCA", p:"RP. 5.000"}, {n:"MANIPS POLAROID", p:"RP. 6.000"}, {n:"MANIPS HALFBODY", p:"RP. 7.000"}, {n:"MANIPS PHOTOBOOTH", p:"RP. 8.000"}];
     document.getElementById('grid-edit-manips').innerHTML = editManips.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Editing')`)).join('');
+    document.getElementById('note-manips').innerHTML = `<strong>ADDITION / TAMBAHAN:</strong><br>• FREE 2–3 CHARA, LEBIH: +RP. 2.000 / CHARA<br>• SCRIBBLE: +RP. 2.000<br>• KISSED: +RP. 2.000`;
 
-    const editScribble = [{n:"KISSED BY", p:"RP. 4.000"}, {n:"HALF SCRIBBLE", p:"RP. 6.000"}, {n:"FULL SCRIBBLE", p:"RP. 8.000"}];
-    document.getElementById('grid-edit-scribble').innerHTML = editScribble.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Editing')`)).join('');
+    const editTwibbonIDC = [{n:"IDC NON TRAINEE", p:"RP. 5.000"}, {n:"IDC TRAINEE", p:"RP. 6.000"}];
+    document.getElementById('grid-edit-twibbonidc').innerHTML = editTwibbonIDC.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Editing')`)).join('');
 
-    const editCouple = [{n:"WALLPAPER COUPLE", p:"RP. 7.000"}, {n:"CYBER COUPLE", p:"RP. 6.000"}, {n:"POLAROID PHOTO", p:"RP. 5.000"}, {n:"CLOSE UP FOTBAR", p:"RP. 5.000"}];
-    document.getElementById('grid-edit-couple').innerHTML = editCouple.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Editing')`)).join('');
+    const editTwibbonTWB = [{n:"TWB BDAY DECO SIMPLE EDIT", p:"RP. 3.000"}, {n:"TWB BDAY DECO MEDIUM EDIT", p:"RP. 5.000"}, {n:"TWB BDAY DECO FULL EDIT", p:"RP. 7.000"}, {n:"STC BDAY", p:"RP. 4.000"}];
+    document.getElementById('grid-edit-twibbontwb').innerHTML = editTwibbonTWB.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Editing')`)).join('');
+    document.getElementById('note-twibbontwb').innerHTML = `<strong>ADDITION / TAMBAHAN:</strong><br>• +1 SLIDE: +RP. 2.000<br>• +1 STC: +RP. 1.000<br>• DESIGN / CYBER EDIT: +RP. 2.000`;
 
-    const editTrainee = [{n:"YEARBOOK BASIC", p:"RP. 9.000"}, {n:"YEARBOOK CUSTOM", p:"RP. 10.000"}, {n:"YEARBOOK COMPLEKS", p:"RP. 12.000"}, {n:"STORY EDIT", p:"RP. 4.000"}, {n:"POSTER EDIT", p:"RP. 9.000"}, {n:"ARTIKEL", p:"RP. 6.000"}, {n:"YEARBOOK", p:"RP. 9.000"}, {n:"MANIPS", p:"RP. 5.000"}, {n:"CYBER", p:"RP. 6.000"}, {n:"FOTBAR", p:"RP. 5.000"}];
-    document.getElementById('grid-edit-trainee').innerHTML = editTrainee.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Editing')`)).join('');
+    const editPoster = [{n:"SIMPLE EDIT", p:"RP. 6.000"}, {n:"MEDIUM EDIT", p:"RP. 8.000"}, {n:"FULL EDIT", p:"RP. 10.000"}];
+    document.getElementById('grid-edit-poster').innerHTML = editPoster.map(i => renderCard(i.n, i.p, `orderViaWA('Poster ${i.n}', 'Editing')`)).join('');
+    document.getElementById('note-poster').innerHTML = `<strong>ADDITION / TAMBAHAN:</strong><br>• DESIGN / CYBER EDIT: +RP. 2.000<br>• FREE 2–4 CHARA, LEBIH: +RP. 2.000 / CHARA<br>• MATERIAL DARI KAMI: +RP. 3.000`;
+
+    const editMoodboard = [
+        {n:"MOODBOARD BASIC 3 SLIDE", p:"RP. 4.000"}, {n:"MOODBOARD BASIC 6 SLIDE", p:"RP. 7.000"},
+        {n:"MOODBOARD DECO 3 SLIDE (SIMPLE)", p:"RP. 4.000"}, {n:"MOODBOARD DECO 3 SLIDE (MEDIUM)", p:"RP. 7.000"}, {n:"MOODBOARD DECO 3 SLIDE (FULL)", p:"RP. 10.000"},
+        {n:"MOODBOARD DECO 6 SLIDE (SIMPLE)", p:"RP. 7.000"}, {n:"MOODBOARD DECO 6 SLIDE (MEDIUM)", p:"RP. 10.000"}, {n:"MOODBOARD DECO 6 SLIDE (FULL)", p:"RP. 13.000"},
+        {n:"MOODBOARD DESIGN 3 SLIDE (SIMPLE)", p:"RP. 7.000"}, {n:"MOODBOARD DESIGN 3 SLIDE (MEDIUM)", p:"RP. 9.000"}, {n:"MOODBOARD DESIGN 3 SLIDE (FULL)", p:"RP. 11.000"},
+        {n:"MOODBOARD DESIGN 6 SLIDE (SIMPLE)", p:"RP. 9.000"}, {n:"MOODBOARD DESIGN 6 SLIDE (MEDIUM)", p:"RP. 11.000"}, {n:"MOODBOARD DESIGN 6 SLIDE (FULL)", p:"RP. 13.000"},
+        {n:"LOVEBOARD DECO 3 SLIDE (SIMPLE) + HEADER", p:"RP. 5.000"}, {n:"LOVEBOARD DECO 3 SLIDE (MEDIUM) + HEADER", p:"RP. 8.000"}, {n:"LOVEBOARD DECO 3 SLIDE (FULL) + HEADER", p:"RP. 11.000"},
+        {n:"LOVEBOARD DECO 6 SLIDE (SIMPLE) + HEADER", p:"RP. 8.000"}, {n:"LOVEBOARD DECO 6 SLIDE (MEDIUM) + HEADER", p:"RP. 11.000"}, {n:"LOVEBOARD DECO 6 SLIDE (FULL) + HEADER", p:"RP. 14.000"},
+        {n:"LOVEBOARD DESIGN 3 SLIDE (SIMPLE) + HEADER", p:"RP. 8.000"}, {n:"LOVEBOARD DESIGN 3 SLIDE (MEDIUM) + HEADER", p:"RP. 10.000"}, {n:"LOVEBOARD DESIGN 3 SLIDE (FULL) + HEADER", p:"RP. 12.000"},
+        {n:"LOVEBOARD DESIGN 6 SLIDE (SIMPLE) + HEADER", p:"RP. 10.000"}, {n:"LOVEBOARD DESIGN 6 SLIDE (MEDIUM) + HEADER", p:"RP. 12.000"}, {n:"LOVEBOARD DESIGN 6 SLIDE (FULL) + HEADER", p:"RP. 14.000"}
+    ];
+    document.getElementById('grid-edit-moodboard').innerHTML = editMoodboard.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Editing')`)).join('');
+
+    document.getElementById('editing-general-notes').innerHTML = `
+        <strong>NOTE & KETENTUAN EDITING:</strong><br>
+        • HARGA BERDASARKAN PANJANG DAN TINGKAT KESULITAN.<br>
+        • REQUEST DESIGN CUSTOM, DETAIL RUMIT, ATAU TAMBAHAN KARAKTER DAPAT DIKENAKAN BIAYA TAMBAHAN.<br>
+        • REVISI MAKSIMAL 3X.<br>
+        • REVISI DI LUAR KETENTUAN DAPAT DIKENAKAN BIAYA TAMBAHAN.<br>
+        • PENGERJAAN MENYESUAIKAN ANTRIAN ORDER.<br>
+        • HARGA BISA BERUBAH TERGANTUNG TINGKAT KESULITAN.<br>
+        • SILAKAN KONSULTASI TERLEBIH DAHULU UNTUK MENENTUKAN DESIGN YANG SESUAI.
+    `;
 
     // 4. WORDING
     const wordingData = [
-        {n: "WORDING PACK BIASA", p: "RP. 7.000 - 12.000"},
-        {n: "WORDING PACK COMPLETE", p: "RP. 12.000 - 19.000"},
+        {n: "WORDING PFP", p: "RP. 6.000 - 11.000"},
         {n: "WORDING BIO", p: "RP. 4.000 - 8.000"},
-        {n: "WORDING PFP", p: "RP. 5.000 - 8.000"},
-        {n: "WORDING LOCATION", p: "RP. 2.000 - 4.000"},
-        {n: "WORDING DISPLAY NAME", p: "RP. 2.000 - 4.000"},
-        {n: "WORDING TITLE KATALOG", p: "RP. 4.000 - 8.000"},
-        {n: "WORDING LIST GROUP", p: "RP. 7.000 - 11.000"},
-        {n: "WORDING BIRTHDAY", p: "RP. 3.000 - 9.000"},
-        {n: "WORDING UP-CHR", p: "RP. 5.000 - 7.000"},
-        {n: "WORDING LIST HASHTAG", p: "RP. 4.000 - 8.000"},
-        {n: "WORDING DESK GROUP", p: "RP. 5.000 - 11.000"},
-        {n: "WORDING DESK KATALOG", p: "RP. 6.000 - 11.000"},
-        {n: "WORDING FAKE IG", p: "RP. 4.000 - 8.000"}
+        {n: "WORDING LOC", p: "RP. 3.000 - 5.000"},
+        {n: "WORDING KATALOG / FREE TITLE", p: "RP. 4.000 - 6.000"},
+        {n: "WORDING BIRTHDAY", p: "RP. 5.000 - 9.000"},
+        {n: "WORDING DESK GROUP", p: "RP. 5.000 - 9.000"},
+        {n: "WORDING LIST", p: "RP. 6.000 - 10.000"},
+        {n: "4 BC CONTACT", p: "RP. 3.000"},
+        {n: "DISPLAY NAME", p: "RP. 2.000"},
+        {n: "UPDATE CHAR", p: "RP. 4.000 - 5.000"},
+        {n: "GREETING MESSAGE (SHORT)", p: "RP. 3.000"},
+        {n: "GREETING MESSAGE (MEDIUM)", p: "RP. 5.000"},
+        {n: "GREETING MESSAGE (LONG)", p: "RP. 7.000"}
     ];
     document.getElementById('grid-wording').innerHTML = wordingData.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Wording')`)).join('');
 
     // 5. SETUP ACC
-    const setupBasic1 = [
-        {n: "BASIC 01 (SHORT) <br><span class='text-[10px] text-slate-400 font-normal'>mb 3 slide + header + bio + dn + loc</span>", p: "RP. 12.000"},
-        {n: "BASIC 01 (MEDIUM) <br><span class='text-[10px] text-slate-400 font-normal'>mb 3 slide + header + bio + dn + loc</span>", p: "RP. 14.000"},
-        {n: "BASIC 01 (LONG) <br><span class='text-[10px] text-slate-400 font-normal'>mb 3 slide + header + bio + dn + loc</span>", p: "RP. 16.000"}
+    const setupPaketa = [
+        {n: "PAKET A (SHORT)", p: "RP. 10.000"},
+        {n: "PAKET A (MEDIUM)", p: "RP. 12.000"},
+        {n: "PAKET A (LONG)", p: "RP. 15.000"}
     ];
-    document.getElementById('grid-setup-basic1').innerHTML = setupBasic1.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n.split('<')[0]}', 'Setup Acc')`)).join('');
+    document.getElementById('grid-setup-paketa').innerHTML = setupPaketa.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Setup Acc')`)).join('');
+    document.getElementById('note-paketa').innerHTML = `<strong>ISI:</strong> BIO, DISPLAY NAME, LOCATION<br><strong>ADD-ON DECO:</strong> 3 SLIDE (+RP. 6.000) | 6 SLIDE (+RP. 7.000)`;
 
-    const setupBasic2 = [
-        {n: "BASIC 02 (SHORT) <br><span class='text-[10px] text-slate-400 font-normal'>mb 6 slide + header + bio + dn + loc</span>", p: "RP. 15.000"},
-        {n: "BASIC 02 (MEDIUM) <br><span class='text-[10px] text-slate-400 font-normal'>mb 6 slide + header + bio + dn + loc</span>", p: "RP. 17.000"},
-        {n: "BASIC 02 (LONG) <br><span class='text-[10px] text-slate-400 font-normal'>mb 6 slide + header + bio + dn + loc</span>", p: "RP. 19.000"}
+    const setupPaketb = [
+        {n: "PAKET B (SHORT)", p: "RP. 12.000"},
+        {n: "PAKET B (MEDIUM)", p: "RP. 14.000"},
+        {n: "PAKET B (LONG)", p: "RP. 17.000"}
     ];
-    document.getElementById('grid-setup-basic2').innerHTML = setupBasic2.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n.split('<')[0]}', 'Setup Acc')`)).join('');
+    document.getElementById('grid-setup-paketb').innerHTML = setupPaketb.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Setup Acc')`)).join('');
+    document.getElementById('note-paketb').innerHTML = `<strong>ISI:</strong> BIO, DISPLAY NAME, LOCATION, TITLE KATALOG<br><strong>ADD-ON DECO:</strong> 3 SLIDE (+RP. 6.000) | 6 SLIDE (+RP. 7.000)`;
 
-    const setupComplete1 = [
-        {n: "COMPLETE 01 (SHORT) <br><span class='text-[10px] text-slate-400 font-normal'>mb 3 slide + header + bio + dn + loc tittle katalog, fake ig</span>", p: "RP. 17.000"},
-        {n: "COMPLETE 01 (MEDIUM) <br><span class='text-[10px] text-slate-400 font-normal'>mb 3 slide + header + bio + dn + loc tittle katalog, fake ig</span>", p: "RP. 20.000"},
-        {n: "COMPLETE 01 (LONG) <br><span class='text-[10px] text-slate-400 font-normal'>mb 3 slide + header + bio + dn + loc tittle katalog, fake ig</span>", p: "RP. 23.000"}
+    const setupPaketc = [
+        {n: "SETUP COMPLITE C (SHORT)", p: "RP. 15.000"},
+        {n: "SETUP COMPLITE C (MEDIUM)", p: "RP. 18.000"},
+        {n: "SETUP COMPLITE C (LONG)", p: "RP. 21.000"}
     ];
-    document.getElementById('grid-setup-complete1').innerHTML = setupComplete1.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n.split('<')[0]}', 'Setup Acc')`)).join('');
+    document.getElementById('grid-setup-paketc').innerHTML = setupPaketc.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Setup Acc')`)).join('');
+    document.getElementById('note-paketc').innerHTML = `<strong>ISI:</strong> BIO, DISPLAY NAME, LOCATION, FAKE IG, TITLE KATALOG<br><strong>ADD-ON DECO:</strong> 3 SLIDE (+RP. 6.000) | 6 SLIDE (+RP. 7.000)`;
 
-    const setupComplete2 = [
-        {n: "COMPLETE 02 (SHORT) <br><span class='text-[10px] text-slate-400 font-normal'>mb 6 slide + header + bio + dn + loc tittle katalog, fake ig</span>", p: "RP. 20.000"},
-        {n: "COMPLETE 02 (MEDIUM) <br><span class='text-[10px] text-slate-400 font-normal'>mb 6 slide + header + bio + dn + loc tittle katalog, fake ig</span>", p: "RP. 23.000"},
-        {n: "COMPLETE 02 (LONG) <br><span class='text-[10px] text-slate-400 font-normal'>mb 6 slide + header + bio + dn + loc tittle katalog, fake ig</span>", p: "RP. 26.000"}
+    const setupBirthday = [
+        {n: "BIRTHDAY PACK (SHORT)", p: "RP. 12.000"},
+        {n: "BIRTHDAY PACK (MEDIUM)", p: "RP. 15.000"},
+        {n: "BIRTHDAY PACK (LONG)", p: "RP. 18.000"}
     ];
-    document.getElementById('grid-setup-complete2').innerHTML = setupComplete2.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n.split('<')[0]}', 'Setup Acc')`)).join('');
+    document.getElementById('grid-setup-birthday').innerHTML = setupBirthday.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Setup Acc')`)).join('');
+    document.getElementById('note-birthday').innerHTML = `<strong>ISI:</strong> TWIBBON BIRTHDAY, STIKER BIRTHDAY, WORDING BIRTHDAY`;
 
-    const setupAddon = [
-        {n: "DECO 3 SLIDE", p: "+RP. 6.000"},
-        {n: "DECO 6 SLIDE", p: "+RP. 7.000"}
-    ];
-    document.getElementById('grid-setup-addon').innerHTML = setupAddon.map(i => renderCard(i.n, i.p, `orderViaWA('${i.n}', 'Setup Acc')`)).join('');
+    document.getElementById('setup-general-notes').innerHTML = `
+        <strong>NOTE & KETENTUAN SETUP ACC:</strong><br>
+        • SHORT, MEDIUM, DAN LONG MENYESUAIKAN DETAIL ISI SETUP.<br>
+        • ISI SETUP MENYESUAIKAN MENU YANG DIPILIH.<br>
+        • STIKER BIRTHDAY BERISI 5 STIKER.<br>
+        • TAMBAHAN STIKER DIKENAKAN BIAYA RP2.000 / STIKER.<br>
+        • HARGA PACK LEBIH HEMAT DARIPADA ORDER SATUAN.<br>
+        • REVISI MAKSIMAL 3X.
+    `;
 
     // 6. APP PREMIUM
     const amData = [{n:"AM ANDROID 1B",p:"RP. 2.000"},{n:"AM IOS 1B",p:"RP. 2.000"},{n:"APPLE MUSIC IOS 1B",p:"RP. 4.500"},{n:"APPLE MUSIC ANDROID 1B",p:"RP. 9.000"},{n:"APPLE MUSIC FAMHEAD 1B",p:"RP. 10.000"}];
