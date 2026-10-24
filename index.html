@@ -9,7 +9,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-600 selection:text-white w-full overflow-x-hidden">
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-600 selection:text-white w-full overflow-x-hidden relative">
+
+    <!-- Ambient Background Decorations -->
+    <div class="ambient-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+        <div class="blob blob-4"></div>
+        <!-- Sparkles / Floating Particles -->
+        <div class="sparkle" style="top: 10%; left: 15%; width: 6px; height: 6px; animation-delay: 0s;"></div>
+        <div class="sparkle" style="top: 20%; right: 20%; width: 8px; height: 8px; animation-delay: 1.2s;"></div>
+        <div class="sparkle" style="top: 38%; left: 8%; width: 5px; height: 5px; animation-delay: 2.5s;"></div>
+        <div class="sparkle" style="top: 50%; right: 12%; width: 7px; height: 7px; animation-delay: 0.5s;"></div>
+        <div class="sparkle" style="top: 68%; left: 22%; width: 6px; height: 6px; animation-delay: 3.2s;"></div>
+        <div class="sparkle" style="top: 85%; right: 28%; width: 8px; height: 8px; animation-delay: 1.8s;"></div>
+    </div>
 
     <!-- HEADER -->
     <header class="bg-slate-900/90 backdrop-blur-md text-white sticky top-0 z-50 border-b border-slate-800 shadow-lg w-full">
@@ -25,9 +40,9 @@
             </div>
             
             <div class="flex items-center space-x-3 flex-shrink-0">
-                <div id="store-status-badge" class="hidden sm:flex items-center space-x-2 bg-emerald-950/60 border border-emerald-800/50 px-3.5 py-1.5 rounded-full text-xs font-semibold text-emerald-200 shadow-inner">
-                    <span id="status-dot" class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span id="status-text">Jam Open: 09.00 - 23.00 WIB</span>
+                <div id="store-status-badge" class="hidden sm:flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-inner">
+                    <span id="status-dot" class="w-2 h-2 rounded-full animate-pulse"></span>
+                    <span id="status-text">Memeriksa Jam...</span>
                 </div>
                 <button onclick="toggleMobileMenu()" class="sm:hidden w-10 h-10 rounded-xl bg-slate-800 text-white flex items-center justify-center border border-slate-700 focus:outline-none">
                     <i id="hamburger-icon" class="fa-solid fa-bars text-lg"></i>
@@ -41,6 +56,7 @@
         <div class="max-w-4xl mx-auto px-4 w-full">
             <div id="nav-bubbles" class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1 w-full scroll-smooth">
                 <button onclick="switchPage('beranda')" class="nav-btn px-4 py-2 rounded-xl bg-blue-600 text-white font-bold text-xs transition-all duration-200 shadow-sm border border-blue-600 flex-shrink-0 whitespace-nowrap">Beranda</button>
+                <button onclick="switchPage('hiring')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-amber-500 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0 whitespace-nowrap">Hiring Team</button>
                 <button onclick="switchPage('jaseb-lpm')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0 whitespace-nowrap">Jaseb LPM</button>
                 <button onclick="switchPage('jaseb-lpfp')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0 whitespace-nowrap">Jaseb LPFP</button>
                 <button onclick="switchPage('editing')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0 whitespace-nowrap">Editing</button>
@@ -49,12 +65,12 @@
                 <button onclick="switchPage('app-premium')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0 whitespace-nowrap">App Prem</button>
                 <button onclick="switchPage('topup-game')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0 whitespace-nowrap">Top Up Game</button>
                 <button onclick="switchPage('lainnya')" class="nav-btn px-4 py-2 rounded-xl bg-slate-100 hover:bg-blue-600 hover:text-white text-slate-700 font-bold text-xs transition-all duration-200 shadow-sm border border-slate-200/80 flex-shrink-0 whitespace-nowrap">Lainnya</button>
-                <button onclick="switchPage('hiring')" class="nav-btn px-4 py-2 rounded-xl bg-amber-50 hover:bg-amber-500 hover:text-white text-amber-700 font-bold text-xs transition-all duration-200 shadow-sm border border-amber-200/80 flex-shrink-0 whitespace-nowrap">Hiring Team</button>
             </div>
 
             <!-- Mobile Drawer Menu -->
             <div id="mobile-drawer" class="hidden sm:hidden flex flex-col gap-2 pt-3 pb-2 border-t border-slate-100 mt-2 w-full">
                 <button onclick="switchPage('beranda'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-blue-600 text-white font-bold text-xs shadow-sm">Beranda</button>
+                <button onclick="switchPage('hiring'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-amber-50 text-amber-700 font-bold text-xs border border-amber-200">Hiring Team</button>
                 <button onclick="switchPage('jaseb-lpm'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">Jaseb LPM</button>
                 <button onclick="switchPage('jaseb-lpfp'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">Jaseb LPFP</button>
                 <button onclick="switchPage('editing'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">Editing</button>
@@ -63,7 +79,6 @@
                 <button onclick="switchPage('app-premium'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">App Premium</button>
                 <button onclick="switchPage('topup-game'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">Top Up Game</button>
                 <button onclick="switchPage('lainnya'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 font-bold text-xs">Lainnya</button>
-                <button onclick="switchPage('hiring'); toggleMobileMenu();" class="nav-btn-mob text-left px-4 py-2.5 rounded-xl bg-amber-50 text-amber-700 font-bold text-xs border border-amber-200">Hiring Team</button>
             </div>
         </div>
     </nav>
@@ -91,21 +106,21 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
+                <div class="bg-white/90 backdrop-blur-sm p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
                     <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-bold flex-shrink-0"><i class="fa-solid fa-shield-halved"></i></div>
                     <div>
                         <h4 class="font-bold text-sm text-slate-800">100% Trusted</h4>
                         <p class="text-xs text-slate-500">Aman & Terpercaya</p>
                     </div>
                 </div>
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
+                <div class="bg-white/90 backdrop-blur-sm p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
                     <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl font-bold flex-shrink-0"><i class="fa-solid fa-bolt"></i></div>
                     <div>
                         <h4 class="font-bold text-sm text-slate-800">Proses Cepat</h4>
                         <p class="text-xs text-slate-500">Dikerjakan tim profesional</p>
                     </div>
                 </div>
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
+                <div class="bg-white/90 backdrop-blur-sm p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center space-x-4">
                     <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl font-bold flex-shrink-0"><i class="fa-solid fa-clock"></i></div>
                     <div>
                         <h4 class="font-bold text-sm text-slate-800">Jam Operasional</h4>
@@ -115,7 +130,44 @@
             </div>
         </div>
 
-        <!-- 2. JASEB LPM -->
+        <!-- 2. HIRING TEAM -->
+        <section id="page-hiring" class="page-content hidden space-y-6 w-full">
+            <div class="flex items-center space-x-3 border-l-4 border-amber-500 pl-3">
+                <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">HIRING TEAM</h2>
+            </div>
+            <p class="text-xs text-amber-800 font-semibold bg-amber-50 border border-amber-200 p-3 rounded-xl">✨ Tertarik bergabung dengan tim Trafalgar Store? Pilih divisi di bawah ini!</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div onclick="applyTeam('jaseb lpm&lpfp')" class="bg-white/90 backdrop-blur-sm p-4 rounded-2xl border border-slate-200 card-hover flex justify-between items-center cursor-pointer group shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-sm text-slate-800 group-hover:text-amber-600 transition">Team Jaseb</h3>
+                        <p class="text-xs text-slate-500">LPM & LPFP</p>
+                    </div>
+                    <div class="w-8 h-8 rounded-xl bg-amber-50 group-hover:bg-amber-500 group-hover:text-white text-amber-600 flex items-center justify-center transition flex-shrink-0">
+                        <i class="fa-solid fa-user-plus text-xs"></i>
+                    </div>
+                </div>
+                <div onclick="applyTeam('editing')" class="bg-white/90 backdrop-blur-sm p-4 rounded-2xl border border-slate-200 card-hover flex justify-between items-center cursor-pointer group shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-sm text-slate-800 group-hover:text-amber-600 transition">Team Editing</h3>
+                        <p class="text-xs text-slate-500">Editor & Manips</p>
+                    </div>
+                    <div class="w-8 h-8 rounded-xl bg-amber-50 group-hover:bg-amber-500 group-hover:text-white text-amber-600 flex items-center justify-center transition flex-shrink-0">
+                        <i class="fa-solid fa-user-plus text-xs"></i>
+                    </div>
+                </div>
+                <div onclick="applyTeam('wording')" class="bg-white/90 backdrop-blur-sm p-4 rounded-2xl border border-slate-200 card-hover flex justify-between items-center cursor-pointer group shadow-sm">
+                    <div>
+                        <h3 class="font-bold text-sm text-slate-800 group-hover:text-amber-600 transition">Team Wording</h3>
+                        <p class="text-xs text-slate-500">Bio, PFP, Desc</p>
+                    </div>
+                    <div class="w-8 h-8 rounded-xl bg-amber-50 group-hover:bg-amber-500 group-hover:text-white text-amber-600 flex items-center justify-center transition flex-shrink-0">
+                        <i class="fa-solid fa-user-plus text-xs"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. JASEB LPM -->
         <section id="page-jaseb-lpm" class="page-content hidden space-y-6 w-full">
             <div class="flex items-center space-x-3 border-l-4 border-blue-600 pl-3">
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">JASEB LPM PRICELIST</h2>
@@ -124,7 +176,7 @@
             <div id="grid-lpm" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
         </section>
 
-        <!-- 3. JASEB LPFP -->
+        <!-- 4. JASEB LPFP -->
         <section id="page-jaseb-lpfp" class="page-content hidden space-y-6 w-full">
             <div class="flex items-center space-x-3 border-l-4 border-blue-600 pl-3">
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">JASEB LPFP PRICELIST</h2>
@@ -133,7 +185,7 @@
             <div id="grid-lpfp" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
         </section>
 
-        <!-- 4. EDITING -->
+        <!-- 5. EDITING -->
         <section id="page-editing" class="page-content hidden space-y-6 w-full">
             <div class="flex items-center space-x-3 border-l-4 border-blue-600 pl-3">
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">EDITING MENU</h2>
@@ -141,57 +193,36 @@
             <p class="text-xs text-blue-700 font-semibold bg-blue-50 border border-blue-200 p-3 rounded-xl">ℹ️ pastikan format mu di isi dengan detail</p>
             <div class="space-y-6">
                 <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Magazine</h3>
-                    <div id="grid-edit-magazine" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
-                    <div id="note-magazine" class="mt-2 p-3 bg-slate-100 rounded-xl text-xs text-slate-600 font-medium"></div>
+                    <h3 class="text-xs font-extrabold text-blue-700 tracking-wider uppercase mb-3 px-1">— EDITING ACCOUNT —</h3>
+                    <div id="grid-edit-account" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
                 </div>
                 <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Header</h3>
-                    <div id="grid-edit-header" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <h3 class="text-xs font-extrabold text-blue-700 tracking-wider uppercase mb-3 px-1">— EDITING RANDOM —</h3>
+                    <div id="grid-edit-random" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
                 </div>
                 <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Profile</h3>
-                    <div id="grid-edit-profile" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
-                    <div id="note-profile" class="mt-2 p-3 bg-slate-100 rounded-xl text-xs text-slate-600 font-medium"></div>
+                    <h3 class="text-xs font-extrabold text-blue-700 tracking-wider uppercase mb-3 px-1">— EDITING COUPLE —</h3>
+                    <div id="grid-edit-couple" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
                 </div>
                 <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Manips</h3>
-                    <div id="grid-edit-manips" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
-                    <div id="note-manips" class="mt-2 p-3 bg-slate-100 rounded-xl text-xs text-slate-600 font-medium"></div>
-                </div>
-                <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Twibbon IDC</h3>
-                    <div id="grid-edit-twibbonidc" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
-                </div>
-                <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Twibbon / STC Bday</h3>
-                    <div id="grid-edit-twibbontwb" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
-                    <div id="note-twibbontwb" class="mt-2 p-3 bg-slate-100 rounded-xl text-xs text-slate-600 font-medium"></div>
-                </div>
-                <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Poster / Artikel</h3>
-                    <div id="grid-edit-poster" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
-                    <div id="note-poster" class="mt-2 p-3 bg-slate-100 rounded-xl text-xs text-slate-600 font-medium"></div>
-                </div>
-                <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">Moodboard & Loveboard</h3>
-                    <div id="grid-edit-moodboard" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+                    <h3 class="text-xs font-extrabold text-blue-700 tracking-wider uppercase mb-3 px-1">— EDITING GROUP —</h3>
+                    <div id="grid-edit-group" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
                 </div>
             </div>
-            <!-- General Editing Notes Box -->
             <div id="editing-general-notes" class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-2xl space-y-1.5 text-xs text-blue-900 font-medium"></div>
         </section>
 
-        <!-- 5. WORDING -->
+        <!-- 6. WORDING -->
         <section id="page-wording" class="page-content hidden space-y-6 w-full">
             <div class="flex items-center space-x-3 border-l-4 border-blue-600 pl-3">
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">WORDING MENU</h2>
             </div>
             <p class="text-xs text-blue-700 font-semibold bg-blue-50 border border-blue-200 p-3 rounded-xl">ℹ️ pastikan format mu di isi dengan detail</p>
             <div id="grid-wording" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+            <div id="wording-general-notes" class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-2xl space-y-1.5 text-xs text-blue-900 font-medium"></div>
         </section>
 
-        <!-- 6. SETUP ACC -->
+        <!-- 7. SETUP ACC -->
         <section id="page-setup-acc" class="page-content hidden space-y-6 w-full">
             <div class="flex items-center space-x-3 border-l-4 border-blue-600 pl-3">
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">SETUP ACC MENU</h2>
@@ -199,31 +230,30 @@
             <p class="text-xs text-blue-700 font-semibold bg-blue-50 border border-blue-200 p-3 rounded-xl">ℹ️ pastikan format mu di isi dengan detail</p>
             <div class="space-y-6">
                 <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Setup Paket A</h3>
+                    <h3 class="text-xs font-extrabold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Setup Paket A</h3>
                     <div id="grid-setup-paketa" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
-                    <div id="note-paketa" class="mt-2 p-3 bg-slate-100 rounded-xl text-xs text-slate-600 font-medium"></div>
+                    <div id="note-paketa" class="mt-2 p-3 bg-white/90 border border-slate-200 rounded-xl text-xs text-slate-600 font-medium"></div>
                 </div>
                 <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Setup Paket B</h3>
+                    <h3 class="text-xs font-extrabold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Setup Paket B</h3>
                     <div id="grid-setup-paketb" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
-                    <div id="note-paketb" class="mt-2 p-3 bg-slate-100 rounded-xl text-xs text-slate-600 font-medium"></div>
+                    <div id="note-paketb" class="mt-2 p-3 bg-white/90 border border-slate-200 rounded-xl text-xs text-slate-600 font-medium"></div>
                 </div>
                 <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Setup Paket C</h3>
+                    <h3 class="text-xs font-extrabold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Setup Paket C</h3>
                     <div id="grid-setup-paketc" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
-                    <div id="note-paketc" class="mt-2 p-3 bg-slate-100 rounded-xl text-xs text-slate-600 font-medium"></div>
+                    <div id="note-paketc" class="mt-2 p-3 bg-white/90 border border-slate-200 rounded-xl text-xs text-slate-600 font-medium"></div>
                 </div>
                 <div>
-                    <h3 class="text-xs font-bold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Birthday Pack</h3>
+                    <h3 class="text-xs font-extrabold text-blue-700 tracking-wider uppercase mb-3 px-1">✦ Birthday Pack</h3>
                     <div id="grid-setup-birthday" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
-                    <div id="note-birthday" class="mt-2 p-3 bg-slate-100 rounded-xl text-xs text-slate-600 font-medium"></div>
+                    <div id="note-birthday" class="mt-2 p-3 bg-white/90 border border-slate-200 rounded-xl text-xs text-slate-600 font-medium"></div>
                 </div>
             </div>
-            <!-- Setup General Notes Box -->
             <div id="setup-general-notes" class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-2xl space-y-1.5 text-xs text-blue-900 font-medium"></div>
         </section>
 
-        <!-- 7. APP PREMIUM -->
+        <!-- 8. APP PREMIUM -->
         <section id="page-app-premium" class="page-content hidden space-y-6 w-full">
             <div class="flex items-center space-x-3 border-l-4 border-blue-600 pl-3">
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">APP PREMIUM</h2>
@@ -253,9 +283,9 @@
             </div>
         </section>
 
-        <!-- 8. TOP UP GAME -->
+        <!-- 9. TOP UP GAME -->
         <section id="page-topup-game" class="page-content hidden space-y-6 w-full">
-            <div class="flex items-center space-x-3 border-l-4 border-blue-600 pl-3">
+            <div class="flex items-center space-x-3 border-l-4 border-indigo-600 pl-3">
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">TOP UP GAME</h2>
             </div>
             <p class="text-xs text-indigo-700 font-semibold bg-indigo-50 border border-indigo-200 p-3 rounded-xl">⚠️ Note: Pastikan id mu benar & Tanya dulu ketersediaan menu</p>
@@ -279,7 +309,7 @@
             </div>
         </section>
 
-        <!-- 9. LAINNYA -->
+        <!-- 10. LAINNYA -->
         <section id="page-lainnya" class="page-content hidden space-y-6 w-full">
             <div class="flex items-center space-x-3 border-l-4 border-blue-600 pl-3">
                 <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">MENU LAINNYA</h2>
@@ -288,56 +318,19 @@
             <div id="grid-lainnya" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
         </section>
 
-        <!-- 10. HIRING TEAM -->
-        <section id="page-hiring" class="page-content hidden space-y-6 w-full">
-            <div class="flex items-center space-x-3 border-l-4 border-amber-500 pl-3">
-                <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">HIRING TEAM</h2>
-            </div>
-            <p class="text-xs text-amber-800 font-semibold bg-amber-50 border border-amber-200 p-3 rounded-xl">✨ Tertarik bergabung dengan tim Trafalgar Store? Pilih divisi di bawah ini!</p>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div onclick="applyTeam('jaseb lpm&lpfp')" class="bg-white p-4 rounded-2xl border border-slate-200 card-hover flex justify-between items-center cursor-pointer group shadow-sm">
-                    <div>
-                        <h3 class="font-bold text-sm text-slate-800 group-hover:text-amber-600 transition">Team Jaseb</h3>
-                        <p class="text-xs text-slate-500">LPM & LPFP</p>
-                    </div>
-                    <div class="w-8 h-8 rounded-xl bg-amber-50 group-hover:bg-amber-500 group-hover:text-white text-amber-600 flex items-center justify-center transition flex-shrink-0">
-                        <i class="fa-solid fa-user-plus text-xs"></i>
-                    </div>
-                </div>
-                <div onclick="applyTeam('editing')" class="bg-white p-4 rounded-2xl border border-slate-200 card-hover flex justify-between items-center cursor-pointer group shadow-sm">
-                    <div>
-                        <h3 class="font-bold text-sm text-slate-800 group-hover:text-amber-600 transition">Team Editing</h3>
-                        <p class="text-xs text-slate-500">Editor & Manips</p>
-                    </div>
-                    <div class="w-8 h-8 rounded-xl bg-amber-50 group-hover:bg-amber-500 group-hover:text-white text-amber-600 flex items-center justify-center transition flex-shrink-0">
-                        <i class="fa-solid fa-user-plus text-xs"></i>
-                    </div>
-                </div>
-                <div onclick="applyTeam('wording')" class="bg-white p-4 rounded-2xl border border-slate-200 card-hover flex justify-between items-center cursor-pointer group shadow-sm">
-                    <div>
-                        <h3 class="font-bold text-sm text-slate-800 group-hover:text-amber-600 transition">Team Wording</h3>
-                        <p class="text-xs text-slate-500">Bio, PFP, Desc</p>
-                    </div>
-                    <div class="w-8 h-8 rounded-xl bg-amber-50 group-hover:bg-amber-500 group-hover:text-white text-amber-600 flex items-center justify-center transition flex-shrink-0">
-                        <i class="fa-solid fa-user-plus text-xs"></i>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- FOOTER -->
         <footer class="pt-8 border-t border-slate-200 text-center space-y-4 w-full">
             <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Gabung Grup & Channel Trafalgar Store</p>
             <div class="flex flex-col sm:flex-row justify-center gap-3 flex-wrap">
-                <a href="https://chat.whatsapp.com/DBPz9V8uVKC0gNI1DDFgio?s=cl&p=a&ilr=4" target="_blank" class="px-5 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 text-xs font-bold transition flex items-center justify-center space-x-2">
+                <a href="https://chat.whatsapp.com/DBPz9V8uVKC0gNI1DDFgio?s=cl&p=a&ilr=4" target="_blank" class="px-5 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 text-xs font-bold transition flex items-center justify-center space-x-2 shadow-sm">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
                     <span>Trafstore Jaseb</span>
                 </a>
-                <a href="https://chat.whatsapp.com/F5GcgnhNrtH8CwtdU76ioY?s=cl&p=a&ilr=4" target="_blank" class="px-5 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 text-xs font-bold transition flex items-center justify-center space-x-2">
+                <a href="https://chat.whatsapp.com/F5GcgnhNrtH8CwtdU76ioY?s=cl&p=a&ilr=4" target="_blank" class="px-5 py-2.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 text-xs font-bold transition flex items-center justify-center space-x-2 shadow-sm">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
                     <span>Trafstore Apprem</span>
                 </a>
-                <a href="https://whatsapp.com/channel/0029VbDW5NT9xVJfhMC1Ry3O" target="_blank" class="px-5 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 text-xs font-bold transition flex items-center justify-center space-x-2">
+                <a href="https://whatsapp.com/channel/0029VbDW5NT9xVJfhMC1Ry3O" target="_blank" class="px-5 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 text-xs font-bold transition flex items-center justify-center space-x-2 shadow-sm">
                     <i class="fa-solid fa-bullhorn text-sm"></i>
                     <span>Channel Item Ready</span>
                 </a>
