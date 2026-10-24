@@ -70,7 +70,7 @@ function toggleMobileMenu() {
 function orderViaWA(item, type) {
     let waNumber = "6285167971251"; // Nomor utama untuk App Prem, Top Up Game, Lainnya, Hiring
     if (type === 'Jaseb LPM' || type === 'Jaseb LPFP' || type === 'Editing' || type === 'Wording' || type === 'Setup Acc') {
-        waNumber = "6283876026185"; // Nomor kasir baru
+        waNumber = "6285167971251"; // Nomor kasir baru
     }
 
     let textTemplate = "";
