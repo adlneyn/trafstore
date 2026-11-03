@@ -70,7 +70,7 @@ function toggleMobileMenu() {
 function orderViaWA(item, type) {
     let waNumber = "6285167971251"; // Nomor utama untuk App Prem, Top Up Game, Lainnya, Hiring
     if (type === 'Jaseb LPM' || type === 'Jaseb LPFP' || type === 'Editing' || type === 'Wording' || type === 'Setup Acc') {
-        waNumber = "6285167971251"; // Nomor kasir baru
+        waNumber = "6283876026185"; // Nomor kasir baru
     }
 
     let textTemplate = "";
@@ -79,6 +79,7 @@ function orderViaWA(item, type) {
         textTemplate = `Misi min mau mesen *${item}*
 
 FORMAT JASA SEBAR LPM/LPFP [PASTIKAN MEMESAN DI JAM KERJA [09.00 - 23.00 WIB]]
+
 ⸙ ꯭ ꯭ ꯭✦    Nama Pemesanan   ─   
 ⸙ ꯭ ꯭ ꯭✦    Nomor   ─   08 (wajib diisi)
 ⸙ ꯭ ꯭ ꯭✦    Banyak   ─   ${item}
@@ -106,6 +107,7 @@ Kontak pengaduan: 085167971251.`;
 
         
 FORMAT EDITING DAN WORDING
+
 ⸙ ꯭ ꯭ ꯭✦    Nama Pemesanan   ─   
 ⸙ ꯭ ꯭ ꯭✦    Nomor   ─   08 (wajib)
 ⸙ ꯭ ꯭ ꯭✦    Pesanan   ─   ${item}
